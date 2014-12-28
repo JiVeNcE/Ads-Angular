@@ -7,10 +7,10 @@ var angularAds = angular.module('adsModule', ['ngRoute'])
         $routeProvider.when('/register', {
             templateUrl: 'templates/register.html'
         });
-        $routeProvider.when('/ads', {
+        $routeProvider.when('/allAds', {
             templateUrl: 'templates/allAds.html'
         });
         $routeProvider.otherwise({
-            redirectTo: 'templates/allAds.html'
+            redirectTo: 'allAds'
         });
     });
