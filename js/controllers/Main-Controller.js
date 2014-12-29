@@ -14,5 +14,8 @@ angularAds.controller('MainController', function($scope, mainData) {
         $scope.categories = resp;
     });
 
+
     $scope.townSelected = $scope.towns;
+
+
 });

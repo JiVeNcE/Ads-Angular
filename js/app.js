@@ -14,3 +14,4 @@ var angularAds = angular.module('adsModule', ['ngRoute'])
             redirectTo: 'allAds'
         });
     });
+
