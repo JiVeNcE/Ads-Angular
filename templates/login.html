@@ -1,4 +1,4 @@
-<div class="well bs-component" ng-if="loginError != ''"  ng-controller="Login">
+<div class="well bs-component" >
     <form class="form-horizontal" >
         <fieldset>
             <legend>Login</legend>
@@ -16,7 +16,7 @@
             </div>
             <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-2">
-                    <button type="submit" class="btn btn-primary" ng-click="login(loginData)" >Login</button>
+                    <button type="submit" class="btn btn-primary"  data-ng-click="login()">Login</button>
                     <span><a href="#/register">Register here</a> </span>
                 </div>
             </div>

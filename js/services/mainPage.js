@@ -1,35 +1,59 @@
-/**
- * Created by Zhivko on 28.12.2014 г..
- */
+angularAds.factory('mainData', function($http, $q, baseUrl) {
+    var url = 'http://localhost:1337/api/';
 
-angularAds.factory('mainData', function($http, $log) {
-    return {
-        getAllAds: function(success) {
-            $http({method: 'GET', url: 'http://localhost:1337/api/ads?PageSize=10&StartPage=1'})
+         function getAllAds(params) {
+            var d = $q.defer();
+
+            $http({
+                method: 'GET',
+                url: baseUrl + 'ads/',
+                params:params
+                })
                 .success(function(data, status, headers, config){
-                    success(data)
+                    d.resolve(data);
                 })
                 .error(function(data, status, headers, config){
-                    $log.warn(data);
-                })
-        },
-        getAllTowns: function(success) {
-            $http({method: 'GET', url: 'http://localhost:1337/api/towns'})
-                .success(function (data, status, headers, config) {
-                    success(data)
-                })
-                .error(function (data, status, headers, config) {
-                    $log.warn(data);
-                })
-        },
-        getAllCategories: function(success) {
-            $http({method: 'GET', url: 'http://localhost:1337/api/categories'})
-                .success(function (data, status, headers, config) {
-                    success(data)
-                })
-                .error(function (data, status, headers, config) {
-                    $log.warn(data);
-                })
+                    d.reject(data);
+                });
+            return d.promise;
         }
+
+         function getAllTowns() {
+             var getUrl = baseUrl + 'towns/';
+             var d = $q.defer();
+            $http({
+                method: 'GET',
+                url: getUrl
+            })
+                .success(function (data, status, headers, config) {
+                    d.resolve(data);
+                })
+                .error(function (data, status, headers, config) {
+                    d.reject(data);
+                });
+             return d.promise;
+        }
+
+         function getAllCategories() {
+             var getUrl = baseUrl + 'categories/';
+             var d = $q.defer();
+            $http({
+                method: 'GET',
+                url: getUrl
+            })
+                .success(function (data, status, headers, config) {
+                    d.resolve(data);
+                })
+                .error(function (data, status, headers, config) {
+                    d.reject(data);
+                });
+             return d.promise;
+        }
+
+    return {
+        getAllAds: getAllAds,
+        getAllTowns: getAllTowns,
+        getAllCategories: getAllCategories
     }
+
 })

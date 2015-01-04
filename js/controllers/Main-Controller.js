@@ -1,21 +1,17 @@
-/**
- * Created by Zhivko on 28.12.2014 г..
- */
-
 angularAds.controller('MainController', function($scope, mainData) {
 
-    mainData.getAllAds(function(resp) {
-        $scope.data = resp;
-    });
-    mainData.getAllTowns(function(resp) {
-        $scope.towns = resp;
-    });
-    mainData.getAllCategories(function (resp) {
-        $scope.categories = resp;
-    });
+    $scope.getAds = function(requestParams) {
 
+        mainData.getAllAds(requestParams).then(function(data) {
 
-    $scope.townSelected = $scope.towns;
+            $scope.dataAds = data.ads;
+        },
+        function(err) {
+            console.log(err);
+        });
+    };
+
+    $scope.getAds($scope.adsRequestParams);
 
 
 });
