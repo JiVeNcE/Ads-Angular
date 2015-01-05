@@ -11,22 +11,22 @@
 
 
 <div class="navbar navbar-default navbar-fixed-top">
-	<div class="container">
-		<div class="navbar-header">
+	<div class="navbar-header">
+		<div class="container">
 			<div class="row">
 				<div class="col-md-4">
 					<a class="navbar-brand" href="#/">Home</a>
 				</div>
 				<div class="col-md-5">
-					<h1  class="navbar navbar-text centered">Publish Ads</h1>
+					<h1  class="navbar navbar-text  text-center">Ads Home</h1>
 				</div>
 				<div class="col-md-3">
-					<div>
-						<div class="navbar navbar-text navbar-right" data-ng-if="">
+					<div ng-controller="RegistrationController">
+						<div class="navbar navbar-text navbar-right" data-ng-if="userData.isLoggedUser()">
 							<div class="navbar-text">
-								{{username}}}
+								{{userData.getLoggedUser().username}}
 							</div>
-							<a href="" ng-click="" class="navbar-brand"></a>
+							<a href="" ng-click="logout()" class="navbar-brand">Logout</a>
 						</div>
 					</div>
 				</div>

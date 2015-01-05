@@ -35,7 +35,7 @@ angularAds.factory('Auth', function($http, $q,$window, baseUrl) {
         },
 
         isLoggedUser: function isLoggedUser() {
-            var sessionUser = $window.sessionStorage.getUtem('UserData');
+            var sessionUser = $window.sessionStorage.getItem('UserData');
 
             return !!sessionUser;
         },

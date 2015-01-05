@@ -1,13 +1,14 @@
 angularAds.controller('RegistrationController', function($scope, $http, $window, Auth) {
 
-
+        $scope.register = registerUser;
         $scope.login = loginUser;
         $scope.userData = Auth;
+        $scope.logout = logout;
 
       function loginUser() {
           var user = {
               username: $scope.username,
-              passwords: $scope.password
+              password: $scope.password
           };
 
           Auth.login(user)
@@ -24,5 +25,39 @@ angularAds.controller('RegistrationController', function($scope, $http, $window,
               }
           );
       }
+
+    function registerUser() {
+        Auth.register($scope.registerData)
+            .then(
+                function(userRegisterData) {
+                    Auth.setLoggedUser(userRegisterData);
+                    Auth.getAuthorizationHeaders();
+                },
+                function(err) {
+                    var error = err.modelState[''];
+                    for (var e in error) {
+                        var errorResultString = checkRegisterUserForErrors(error[e]);
+                        messaging.errorMessage(errorResultString);
+                        console.log(errorResultString);
+                    }
+                }
+        )
+    }
+
+    function logout() {
+        var headers = Auth.getAuthorizationHeaders();
+        Auth.logout(headers).
+            then(
+                function(data) {
+                    Auth.removeAuthorizationHeaders();
+                    Auth.setLoggedUser(undefined);
+                   // messaging.successMessage(data.message);
+                    $window.location.href = '#/';
+                },
+                function(err) {
+               //     messaging.errorMessage(err.message);
+                    console.log(err);
+        });
+    }
 
     });
