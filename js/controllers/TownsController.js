@@ -1,4 +1,4 @@
-angularAds.controller('TownsController', function($scope, mainData) {
+angularAds.controller('TownsController', ['$scope', '$rootScope', 'mainData', 'filter', function($scope, $rootScope, mainData, filter) {
 
     var getTowns = function() {
         mainData.getAllTowns()
@@ -11,5 +11,11 @@ angularAds.controller('TownsController', function($scope, mainData) {
         )
     };
 
-    getTowns()
-});
+    getTowns();
+
+
+    $scope.townClicked = function townClicked(town) {
+        filter.filterByTown(town);
+        $rootScope.$broadcast('townClicked', town)
+    };
+}]);

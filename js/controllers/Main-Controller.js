@@ -1,17 +1,25 @@
-angularAds.controller('MainController', function($scope, mainData) {
+angularAds.controller('MainController', ['$scope', 'adsData', 'filter', function($scope, adsData, filter) {
 
-    $scope.getAds = function(requestParams) {
+    function loadPublicAds(filterParams) {
+        filterParams = filterParams || {};
+        adsData.getPublicAds(filterParams)
+            .$promise
+            .then(function(data) {
+                $scope.adsData = data;
+            })
+    }
 
-        mainData.getAllAds(requestParams).then(function(data) {
+    loadPublicAds();
 
-            $scope.dataAds = data.ads;
-        },
-        function(err) {
-            console.log(err);
-        });
-    };
+    $scope.$on('categoryClicked', function(event, category) {
+        loadPublicAds(filter.getFilterParams());
+    });
 
-    $scope.getAds($scope.adsRequestParams);
+    $scope.$on('townClicked', function(event, category) {
+        loadPublicAds(filter.getFilterParams());
+    })
 
 
-});
+
+
+}]);

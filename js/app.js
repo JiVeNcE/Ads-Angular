@@ -1,5 +1,5 @@
 
-var angularAds = angular.module('adsModule', ['ngRoute'])
+var angularAds = angular.module('adsModule', ['ngRoute', 'cgNotify', 'ngResource'])
 .config(function ($routeProvider) {
         $routeProvider.when('/login', {
             title: 'Ads-Login',

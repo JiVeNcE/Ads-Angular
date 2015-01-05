@@ -41,7 +41,7 @@
             <div class="form-group">
                 <label for="select" class="col-lg-2 control-label">Town:</label>
                 <div class="col-lg-10" ng-controller="TownsController">
-                    <select ng-model="townSelected" ng-options="town as town.name for town in towns" class="form-control" id="select" >
+                    <select ng-model="townSelected.town.id" ng-options="town as town.name for town in towns" class="form-control" id="select" >
                         <option value="">-- choose town --</option>
                     </select>
                 </div>

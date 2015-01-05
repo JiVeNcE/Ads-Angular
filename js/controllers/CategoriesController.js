@@ -1,4 +1,4 @@
-angularAds.controller('CategoriesController', function($scope, mainData) {
+angularAds.controller('CategoriesController', ['$scope', '$rootScope', 'mainData', 'filter', function($scope, $rootScope, mainData, filter) {
 
      var getCategories = function() {
         mainData.getAllCategories()
@@ -10,6 +10,12 @@ angularAds.controller('CategoriesController', function($scope, mainData) {
             });
     };
 
+    $scope.categoryClicked = function categoryClicked(category) {
+        filter.filterByCategory(category);
+        $rootScope.$broadcast('categoryClicked', category)
+    };
+
+
     getCategories();
 
-});
+}]);

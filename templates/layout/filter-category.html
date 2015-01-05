@@ -3,8 +3,13 @@
         <div class="panel-heading">
             <h3 class="panel-title">Category</h3>
         </div>
-        <div class="panel-body" ng-repeat="category in categories">
-            {{category.name}}
+        <div class="panel-body" >
+            <ul >
+                <li ng-repeat="category in categories" ng-click="categoryClicked(category)">
+                    {{category.name}}
+                </li>
+            </ul>
+
         </div>
     </div>
 

@@ -2,7 +2,13 @@
     <div class="panel-heading">
         <h3 class="panel-title">Town</h3>
     </div>
-    <div class="panel-body" ng-repeat="town in towns">
-        {{town.name}}
+    <div class="panel-body" >
+
+        <ul >
+            <li ng-repeat="town in towns" ng-click="townClicked(town)">
+                {{town.name}}
+            </li>
+        </ul>
+
     </div>
 </div>

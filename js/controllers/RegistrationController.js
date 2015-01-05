@@ -1,4 +1,4 @@
-angularAds.controller('RegistrationController', function($scope, $http, $window, Auth) {
+angularAds.controller('RegistrationController', function($scope, $http, $window, Auth, notify) {
 
         $scope.register = registerUser;
         $scope.login = loginUser;
@@ -18,6 +18,7 @@ angularAds.controller('RegistrationController', function($scope, $http, $window,
                   Auth.getAuthorizationHeaders();
                   $window.location.href = '#/user/home';
                   //   messaging.successMessage("Welcome " + userLoginData.username);
+                  notify("Welcome " + userLoginData.username)
               },
               function(err) {
                 //  messaging.errorMessage(err.error_description);
@@ -52,6 +53,7 @@ angularAds.controller('RegistrationController', function($scope, $http, $window,
                     Auth.removeAuthorizationHeaders();
                     Auth.setLoggedUser(undefined);
                    // messaging.successMessage(data.message);
+                    notify(data.message);
                     $window.location.href = '#/';
                 },
                 function(err) {
