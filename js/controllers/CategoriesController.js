@@ -12,9 +12,13 @@ angularAds.controller('CategoriesController', ['$scope', '$rootScope', 'mainData
 
     $scope.categoryClicked = function categoryClicked(category) {
         filter.filterByCategory(category);
-        $rootScope.$broadcast('categoryClicked', category)
+        $rootScope.$broadcast('categoryClicked', category);
+        if (category) {
+            $scope.activeCategory = category.id;
+        } else {
+            $scope.activeCategory = 'all';
+        }
     };
-
 
     getCategories();
 

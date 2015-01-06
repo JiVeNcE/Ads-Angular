@@ -16,6 +16,11 @@ angularAds.controller('TownsController', ['$scope', '$rootScope', 'mainData', 'f
 
     $scope.townClicked = function townClicked(town) {
         filter.filterByTown(town);
-        $rootScope.$broadcast('townClicked', town)
+        $rootScope.$broadcast('townClicked', town);
+        if (town) {
+            $scope.activeTown = town.id;
+        } else {
+            $scope.activeTown = 'all';
+        }
     };
 }]);
