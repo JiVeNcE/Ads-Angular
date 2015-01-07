@@ -1,5 +1,5 @@
 
-var angularAds = angular.module('adsModule', ['ngRoute', 'cgNotify', 'ngResource'])
+var angularAds = angular.module('adsModule', ['ngRoute', 'cgNotify', 'ngResource', 'ui.bootstrap.pagination', 'angular-loading-bar'])
 .config(function ($routeProvider) {
         $routeProvider.when('/login', {
             title: 'Ads-Login',
@@ -27,6 +27,7 @@ var angularAds = angular.module('adsModule', ['ngRoute', 'cgNotify', 'ngResource
             }
         };
     })
-    .constant('baseUrl', 'http://localhost:1337/api/');
+    .constant('baseUrl', 'http://softuni-ads.azurewebsites.net/api/')
+    .constant('pageSize', 5);
     // .constant('baseUrl', 'http://softuni-ads.azurewebsites.net/api/')
 

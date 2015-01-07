@@ -1,6 +1,13 @@
+<pagination total-items="ads.numItems"
+            ng-model="adsParams.startPage"
+            items-per-page="adsParams.pageSize"
+            ng-change="reloadAds()"
+            max-size="9"
+            boundary-links="true">
+</pagination>
 
         <ul id="ul">
-            <li ng-repeat="ad in adsData.ads">
+            <li ng-repeat="ad in ads.ads">
                 <div class="container well">
                     <div class="row">
                         <div class="col-md-7">
@@ -16,7 +23,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="" ng-src="{{ad.imageDataUrl}}" >
+                            <img class="ad-image" src="" ng-src="{{ad.imageDataUrl}}" >
                         </div>
                         <div class="col-md-8">
                             <div>

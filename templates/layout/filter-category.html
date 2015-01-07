@@ -1,17 +1,20 @@
 
-    <div class="panel panel-primary" data-ng-controller="CategoriesController">
+    <div class="panel panel-primary" data-ng-controller="RightSidebarController">
         <div class="panel-heading">
             <h3 class="panel-title">Category</h3>
         </div>
         <div class="panel-body" >
-            <ul class="nav nav-pills nav-stacked">
-                <li data-ng-class="{'active': 'all' == activeCategory}">
-                    <a href="" ng-click="categoryClicked(0)">All Category</a>
+            <ul class="nav nav-pills nav-stacked sidebar-menu" >
+                <li ng-class="{'selected' : selectedCategoryId == null}"
+                       ng-click="categoryClicked(null)">
+                    All
                 </li>
             </ul>
-            <ul class="nav nav-pills nav-stacked" ng-repeat="category in categories">
-                <li data-ng-class="{'active': category.id == activeCategory}" >
-                    <a href="" ng-click="categoryClicked(category)">{{category.name}}</a>
+            <ul class="nav nav-pills nav-stacked sidebar-menu">
+                <li ng-repeat="category in categories"
+                    ng-click="categoryClicked(category.id)"
+                    ng-class="{'selected' : selectedCategoryId == category.id}">
+                    {{category.name}}
                 </li>
             </ul>
         </div>

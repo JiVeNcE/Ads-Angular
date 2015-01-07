@@ -1,16 +1,19 @@
-<div class="panel panel-primary" ng-controller="TownsController">
+<div class="panel panel-primary" ng-controller="RightSidebarController">
     <div class="panel-heading">
         <h3 class="panel-title">Town</h3>
     </div>
     <div class="panel-body" >
-        <ul class="nav nav-pills nav-stacked">
-        <li data-ng-class="{'active': 'all' == activeTown}">
-            <a href="" ng-click="townClicked(0)">All Towns</a>
+        <ul class="nav nav-pills nav-stacked sidebar-menu" >
+        <li   ng-class="{'selected' : selectedTownId == null}"
+              ng-click="townClicked(null)">
+            All
         </li>
         </ul>
-        <ul class="nav nav-pills nav-stacked" ng-repeat="town in towns">
-            <li data-ng-class="{'active': town.id == activeTown}" >
-                <a href="" ng-click="townClicked(town)">{{town.name}}</a>
+        <ul class="nav nav-pills nav-stacked sidebar-menu" >
+            <li ng-repeat="town in towns"
+                ng-click="townClicked(town.id)"
+                ng-class="{'selected' : selectedTownId == town.id}">
+                {{town.name}}
             </li>
         </ul>
 

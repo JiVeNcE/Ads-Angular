@@ -1,25 +1,39 @@
-angularAds.controller('MainController', ['$scope', 'adsData', 'filter', function($scope, adsData, filter) {
+angularAds.controller('MainController', function($scope, adsData, pageSize) {
 
-    function loadPublicAds(filterParams) {
-        filterParams = filterParams || {};
-        adsData.getPublicAds(filterParams)
-            .$promise
-            .then(function(data) {
-                $scope.adsData = data;
-            })
-    }
+    $scope.adsParams = {
+        'startPage' : 1,
+        'pageSize' : pageSize
+    };
 
-    loadPublicAds();
+    $scope.reloadAds = function() {
+        adsData.getAds(
+            $scope.adsParams,
+            function success(data) {
+                $scope.ads = data;
 
-    $scope.$on('categoryClicked', function(event, category) {
-        loadPublicAds(filter.getFilterParams());
+                console.log($scope.adsParams.startPage)
+            },
+            function error(err) {
+                console.log("gresgka" + err)
+            }
+        );
+    };
+
+
+    $scope.reloadAds();
+
+    $scope.$on("categorySelectionChanged", function(event, selectedCategoryId) {
+        $scope.adsParams.categoryId = selectedCategoryId;
+        $scope.adsParams.startPage = 1;
+        $scope.reloadAds();
     });
 
-    $scope.$on('townClicked', function(event, category) {
-        loadPublicAds(filter.getFilterParams());
-    })
+    //$scope.$on('categoryClicked', function(event, category) {
+    //    loadPublicAds(filter.getParams());
+    //});
+    //
+    //$scope.$on('townClicked', function(event, category) {
+    //    loadPublicAds(filter.getParams());
+    //})
 
-
-
-
-}]);
+});
