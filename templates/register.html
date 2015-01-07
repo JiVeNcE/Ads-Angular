@@ -5,52 +5,53 @@
             <div class="form-group">
                 <label for="inputRegUsername" class="col-lg-2 control-label">Username:</label>
                 <div class="col-lg-10">
-                    <input type="text" class="form-control" id="inputRegUsername" placeholder="Username" ng-model="registerData.username">
+                    <input type="text" class="form-control" id="inputRegUsername" placeholder="Username" ng-model="userData.username" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputPassword" class="col-lg-2 control-label">Password:</label>
                 <div class="col-lg-10">
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="registerData.password">
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="userData.password" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputConfPassword" class="col-lg-2 control-label">Confirm password:</label>
                 <div class="col-lg-10">
-                    <input type="password" class="form-control" id="inputConfPassword" placeholder="Confirm password" ng-model="registerData.confirmPassword">
+                    <input type="password" class="form-control" id="inputConfPassword" placeholder="Confirm password" ng-model="userData.confirmPassword" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputName" class="col-lg-2 control-label">Name:</label>
                 <div class="col-lg-10">
-                    <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="registerData.name">
+                    <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="userData.name" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputEmail" class="col-lg-2 control-label">Email:</label>
                 <div class="col-lg-10">
-                    <input type="email" class="form-control" id="inputEmail" placeholder="Email" ng-model="registerData.email">
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Email" ng-model="userData.email" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputPhone" class="col-lg-2 control-label">Phone:</label>
                 <div class="col-lg-10">
-                    <input type="tel" class="form-control" id="inputPhone" placeholder="Phone" ng-model="registerData.phone">
+                    <input type="tel" class="form-control" id="inputPhone" placeholder="Phone" ng-model="userData.phone" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="select" class="col-lg-2 control-label">Town:</label>
-                <div class="col-lg-10" ng-controller="TownsController">
-                    <select ng-model="townSelected.town.id" ng-options="town as town.name for town in towns" class="form-control" id="select" >
-                        <option value="">-- choose town --</option>
+                <div class="col-lg-10">
+                    <select ng-model="userData.townId"  class="form-control" id="select" >
+                        <option value="null">-- choose town --</option>
+                        <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
                     </select>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-2">
-                    <button class="btn btn-default">Cancel</button>
-                    <button type="submit" class="btn btn-primary" ng-click="register(registerData,registerForm)">Submit</button>
+                    <button class="btn btn-default" ><a href="#/">Cancel</a></button>
+                    <button type="submit" class="btn btn-primary" ng-click="register(userData)">Submit</button>
                 </div>
             </div>
         </fieldset>

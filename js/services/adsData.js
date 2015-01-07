@@ -1,7 +1,6 @@
 'use strict';
 
 angularAds.factory('adsData', function( $resource, baseUrl) {
-    var url = 'http://localhost:1337/api/';
 
     var adsResource = $resource(
         baseUrl + 'ads',

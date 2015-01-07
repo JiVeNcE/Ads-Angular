@@ -28,6 +28,12 @@ angularAds.controller('MainController', function($scope, adsData, pageSize) {
         $scope.reloadAds();
     });
 
+    $scope.$on("townSelectionChanged", function(event, selectedTownId) {
+        $scope.adsParams.townId = selectedTownId;
+        $scope.adsParams.startPage = 1;
+        $scope.reloadAds();
+    });
+
     //$scope.$on('categoryClicked', function(event, category) {
     //    loadPublicAds(filter.getParams());
     //});

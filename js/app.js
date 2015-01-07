@@ -4,16 +4,16 @@ var angularAds = angular.module('adsModule', ['ngRoute', 'cgNotify', 'ngResource
         $routeProvider.when('/login', {
             title: 'Ads-Login',
             templateUrl: 'templates/login.html',
-            controller: 'RegistrationController'
+            controller: 'LoginController'
         });
         $routeProvider.when('/register', {
             title: 'Ads - Registration',
             templateUrl: 'templates/register.html',
-            controller: 'RegistrationController'
+            controller: 'RegisterController'
         });
         $routeProvider.when('/', {
             title: 'Ads - Home',
-            templateUrl: 'templates/allAds.html',
+            templateUrl: 'templates/Home.html',
             controller: 'MainController'
         });
         $routeProvider.otherwise({
