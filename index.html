@@ -12,34 +12,19 @@
 
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top" ng-controller="AppController">
-	<div class="navbar-header">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4">
-					<a class="navbar-brand" href="#/">Home 	</a>
-				</div>
-				<div class="col-md-5">
-					<h1 ng-if="pageTitle" class="navbar navbar-text  text-center">Ads - {{pageTitle}}</h1>
-				</div>
-				<div class="col-md-3">
-					<div>
-						<div class="navbar navbar-text navbar-right" data-ng-if="authService.isLoggedIn()">
-							<div class="navbar-text">
-								{{authService.getCurrentUser().username}}
-							</div>
-							<a href="" ng-click="logout()" class="navbar-brand">Logout</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div id="header">
+	<div ng-include="'templates/layout/header.html'"></div>
 </div>
+
+
 
 <div class="ng-view jumbotron">
 
 </div>
+
+<footer class="panel-footer">
+	&copy; 2014 by Software University Foundation, No Rights Reserved
+</footer>
 
 <script src="lib/angular/angular.js"></script>
 <script src="lib/angular/angular-route.min.js"></script>

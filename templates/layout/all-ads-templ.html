@@ -1,12 +1,6 @@
-<pagination total-items="ads.numItems"
-            ng-model="adsParams.startPage"
-            items-per-page="adsParams.pageSize"
-            ng-change="reloadAds()"
-            max-size="9"
-            boundary-links="true">
-</pagination>
 
-        <ul id="ul">
+
+        <ul id="ul" >
             <li ng-repeat="ad in ads.ads">
                 <div class="container well">
                     <div class="row">
@@ -39,3 +33,11 @@
                 </div>
             </li>
         </ul>
+
+        <pagination total-items="ads.numItems"
+                    ng-model="adsParams.startPage"
+                    items-per-page="adsParams.pageSize"
+                    ng-change="reloadAds()"
+                    max-size="9"
+                    boundary-links="true">
+        </pagination>

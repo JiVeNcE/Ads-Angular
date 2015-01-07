@@ -10,8 +10,6 @@ angularAds.controller('MainController', function($scope, adsData, pageSize) {
             $scope.adsParams,
             function success(data) {
                 $scope.ads = data;
-
-                console.log($scope.adsParams.startPage)
             },
             function error(err) {
                 console.log("gresgka" + err)
@@ -33,13 +31,5 @@ angularAds.controller('MainController', function($scope, adsData, pageSize) {
         $scope.adsParams.startPage = 1;
         $scope.reloadAds();
     });
-
-    //$scope.$on('categoryClicked', function(event, category) {
-    //    loadPublicAds(filter.getParams());
-    //});
-    //
-    //$scope.$on('townClicked', function(event, category) {
-    //    loadPublicAds(filter.getParams());
-    //})
 
 });

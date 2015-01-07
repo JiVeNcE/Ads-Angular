@@ -20,14 +20,8 @@ var angularAds = angular.module('adsModule', ['ngRoute', 'cgNotify', 'ngResource
             title: 'Ads - Home',
             redirectTo: '/'
         });
-    }).run(function($location, $rootScope) {
-        $rootScope.page = {
-            setTitle: function(title) {
-                this.title = title;
-            }
-        };
     })
     .constant('baseUrl', 'http://softuni-ads.azurewebsites.net/api/')
-    .constant('pageSize', 5);
+    .constant('pageSize', 7);
     // .constant('baseUrl', 'http://softuni-ads.azurewebsites.net/api/')
 

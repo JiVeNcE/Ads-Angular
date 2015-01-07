@@ -22,7 +22,7 @@ angularAds.factory('authService',
                     data: userData
                 };
                 $http(request).success(function(data) {
-                    //  sessionStorage['currentUser'] = JSON.stringify(data);
+                    sessionStorage['currentUser'] = JSON.stringify(data);
                     success(data);
                 }).error(error);
             },
@@ -39,6 +39,7 @@ angularAds.factory('authService',
             },
 
             isAnonymous : function() {
+
                 return sessionStorage['currentUser'] == undefined;
             },
 
@@ -54,7 +55,7 @@ angularAds.factory('authService',
 
             isAdmin : function() {
                 var currentUser = this.getCurrentUser();
-                return (currentUser != undefined) && (!currentUser.isAdmin);
+                return (currentUser != undefined) && (currentUser.isAdmin);
             },
 
             getAuthHeaders : function() {
