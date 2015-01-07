@@ -2,6 +2,8 @@
 
 angularAds.controller('LoginController',
     function ($scope, $rootScope, $location, authService, notify) {
+        $rootScope.pageTitle = "Login";
+
         $scope.login = function(userData) {
             authService.login(userData,
                 function success() {

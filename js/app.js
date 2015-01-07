@@ -1,6 +1,7 @@
 
-var angularAds = angular.module('adsModule', ['ngRoute', 'cgNotify', 'ngResource', 'ui.bootstrap.pagination', 'angular-loading-bar'])
-.config(function ($routeProvider) {
+var angularAds = angular.module('adsModule', ['ngRoute', 'cgNotify', 'ngResource', 'ui.bootstrap.pagination', 'angular-loading-bar']);
+
+angularAds.config(function ($routeProvider) {
         $routeProvider.when('/login', {
             title: 'Ads-Login',
             templateUrl: 'templates/login.html',
@@ -16,12 +17,42 @@ var angularAds = angular.module('adsModule', ['ngRoute', 'cgNotify', 'ngResource
             templateUrl: 'templates/Home.html',
             controller: 'MainController'
         });
-        $routeProvider.otherwise({
-            title: 'Ads - Home',
-            redirectTo: '/'
+        $routeProvider.when('/user/home', {
+            templateUrl: 'templates/user/user-home.html',
+            controller: 'AppController'
         });
+        $routeProvider.when('/user/ads/publish', {
+            templateUrl: 'templates/user/publish-new-ad.html',
+            controller: 'UserPublishNewAdController'
+        });
+        $routeProvider.when('/user/ads', {
+            templateUrl: 'templates/user/user-ads.html'
+
+        });
+    $routeProvider.when('/user/profile', {
+        templateUrl: 'templates/user/edit-profile.html'
+
+    });
+        $routeProvider.when('/unauthorized', {
+            templateUrl: 'templates/unauthorized.html'
+        });
+        $routeProvider.otherwise(
+            { redirectTo: '/' }
+        );
+
+
     })
     .constant('baseUrl', 'http://softuni-ads.azurewebsites.net/api/')
-    .constant('pageSize', 7);
-    // .constant('baseUrl', 'http://softuni-ads.azurewebsites.net/api/')
+    .constant('pageSize', 7)
+    .run(function ($rootScope, $location, authService) {
+        $rootScope.$on('$locationChangeStart', function (event) {
+           var path =  $location.path();
+            if ( !authService.isLoggedIn() && path !== '/login' && path !== '/register' && path !== '/')  {
+                $location.path('/unauthorized');
+            }
+
+        });
+    });
+
+// .constant('baseUrl', 'http://softuni-ads.azurewebsites.net/api/')
 

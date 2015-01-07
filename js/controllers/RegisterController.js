@@ -1,8 +1,9 @@
 'use strict';
 
 angularAds.controller('RegisterController',
-    function ($scope, $location, townsService, authService) {
+    function ($scope, $rootScope, $location, townsService, authService) {
 
+        $rootScope.pageTitle = "Register";
 
         $scope.userData = {townId: null};
         $scope.towns = townsService.getTowns();
@@ -10,8 +11,7 @@ angularAds.controller('RegisterController',
         $scope.register = function(userData) {
             authService.register(userData,
                 function success() {
-                    // TODO: display success message
-                    // TODO: redirect to login screen
+                   $scope.authService = userData;
                 },
                 function error(err) {
                     console.log(err.error_description)

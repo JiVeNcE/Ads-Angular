@@ -1,4 +1,6 @@
-angularAds.controller('MainController', function($scope, adsData, pageSize) {
+angularAds.controller('MainController', function($scope, $rootScope, adsData, pageSize) {
+
+    $rootScope.pageTitle = "Home";
 
     $scope.adsParams = {
         'startPage' : 1,

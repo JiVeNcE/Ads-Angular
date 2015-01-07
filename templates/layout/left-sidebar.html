@@ -1,0 +1,25 @@
+<div class="panel panel-primary"  data-ng-if="authService.isAnonymous()" >
+    <div class="panel-heading">
+        <h4 class="panel-title">To publish a new
+            ad, please login.</h4>
+    </div>
+    <div class="panel-body text-center"  >
+        <a href="#/login" class="btn btn-success">Login</a>
+        <a href="#/register" class="btn btn-success">Register</a>
+    </div>
+</div>
+
+
+<div class="panel panel-primary"  data-ng-if="authService.isNormalUser()" >
+    <div class="panel-heading">
+        <h4 class="panel-title">Navigation.</h4>
+    </div>
+    <div class="panel-body text-center" >
+           <a href="#/">Home</a>
+           <a href="#/user/ads">My Ads</a>
+           <a href="#/user/ads/publish">Publish New Ad</a>
+           <a href="#/user/profile">Edit Profile</a>
+           <a ng-click="logout()">Logout</a>
+    </div>
+</div>
+

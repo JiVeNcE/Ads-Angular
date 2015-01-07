@@ -7,8 +7,8 @@ angularAds.controller('AppController',
 
         $scope.logout = function() {
             authService.logout();
-            notify("Loout successfull");
-            $location.path('#/');
+            notify("Logout successful");
+            $location.path('/');
         };
 
         $scope.isAnonymous = function() {
