@@ -33,7 +33,10 @@ angularAds.config(function ($routeProvider) {
             templateUrl: 'templates/user/delete-ad.html',
             controller: 'UserDeleteAdController'
         });
-
+        $routeProvider.when('/user/ads/edit/:id', {
+            templateUrl: 'templates/user/edit-ad.html',
+            controller: 'UserEditAdController'
+        });
         $routeProvider.when('/user/profile', {
             templateUrl: 'templates/user/edit-profile.html'
 

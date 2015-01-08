@@ -48,10 +48,15 @@ angularAds.controller('UserAdController',
             )
         };
 
-      $scope.loadDeletePage = function(id) {
+        $scope.loadDeletePage = function(id) {
           $cookieStore.put('adForDelete', id);
           $location.path('/user/ads/delete/' + id);
-      };
+        };
+
+        $scope.loadEditPage = function(id) {
+            $cookieStore.put('adForEdit', id);
+            $location.path('/user/ads/edit/' + id);
+        };
 
         $scope.getUserAd();
     }

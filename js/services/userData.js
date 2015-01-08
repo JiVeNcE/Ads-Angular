@@ -62,12 +62,12 @@ angularAds.factory('userService',
                 $http(request).success(success).error(error);
             },
 
-            editAd: function (id, success, error) {
+            editAd: function (id, data, success, error) {
                 var request = {
                     method: 'PUT',
                     url: baseUrl + 'user/ads/' + id,
+                    data: data,
                     headers: authService.getAuthHeaders()
-
                 };
                 $http(request).success(success).error(error);
             }
