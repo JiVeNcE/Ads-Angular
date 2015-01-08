@@ -43,7 +43,20 @@ angularAds.controller('UserAdController',
                     $scope.getUserAd($scope.adsRequestParams);
                 },
                 function error(err){
-                    console.log('cannot change status' + err.error_description);
+                    console.log('cannot publush ad' + err.error_description);
+                }
+            )
+        };
+
+        $scope.deleteUserAd = function(id) {
+            userService.deleteAd(
+                id,
+                function success(data){
+                    alert('add deleted');
+                    $scope.getUserAd($scope.adsRequestParams);
+                },
+                function error(err){
+                    console.log('cannot delete' + err.error_description);
                 }
             )
         };

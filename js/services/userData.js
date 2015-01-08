@@ -41,6 +41,26 @@ angularAds.factory('userService',
 
                 };
                 $http(request).success(success).error(error);
+            },
+
+            deleteAd: function (id, success, error) {
+                var request = {
+                    method: 'DELETE',
+                    url: baseUrl + 'user/ads/' + id,
+                    headers: authService.getAuthHeaders()
+
+                };
+                $http(request).success(success).error(error);
+            },
+
+            editAd: function (id, success, error) {
+                var request = {
+                    method: 'PUT',
+                    url: baseUrl + 'user/ads/' + id,
+                    headers: authService.getAuthHeaders()
+
+                };
+                $http(request).success(success).error(error);
             }
         }
     }
