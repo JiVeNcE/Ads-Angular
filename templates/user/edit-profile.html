@@ -1,3 +1,86 @@
-<div class="col-md-2" ng-controller="AppController">
-    <div data-ng-include="'templates/layout/left-sidebar.html'"> </div>
+
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-2" ng-controller="AppController">
+            <div data-ng-include="'templates/layout/left-sidebar.html'"> </div>
+        </div>
+        <div class="col-md-6">
+            <div class="well bs-component">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <legend class="text-center">Edit Profile</legend>
+                        <div class="form-group">
+                            <label for="name" class="col-lg-2 control-label">Name</label>
+                            <div class="col-lg-10">
+                                <input type="name" class="form-control" id="name" data-ng-model="userProfile.name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-lg-2 control-label">Email</label>
+                            <div class="col-lg-10">
+                                <input type="email" class="form-control" id="email" data-ng-model="userProfile.email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="col-lg-2 control-label">Phone</label>
+                            <div class="col-lg-10">
+                                <input type="phone" class="form-control" id="phone" data-ng-model="userProfile.phoneNumber">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="select" class="col-lg-2 control-label">Selects</label>
+                            <div class="col-lg-10" data-ng-controller="RightSidebarController">
+                                <select class="form-control" id="select" data-ng-model="userProfile.townId">
+                                    <option value='{{town.id}}' data-ng-selected='town.id == userProfile.townId' data-ng-repeat="town in towns">{{town.name}}</option>
+                                    <option value='' >Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <button class="btn btn-default">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+        </div>
+        </div>
+        <div class="col-md-4">
+            <div class="well bs-component">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <legend class="text-center">Change Password</legend>
+                            <div class="row center-block" >
+                                <div class="form-group col-md-12">
+                                    <label class="control-label" for="old-password">Old passwordt</label>
+                                    <input class="form-control " id="old-password" type="text">
+                                </div>
+                            </div>
+                            <div class="row center-block col-md-12" >
+                                <div class="form-group">
+                                    <label for="new-password" class="control-label">New Password</label>
+                                    <input type="password" class="form-control" id="new-password">
+                                </div>
+                            </div>
+                            <div class="row center-block col-md-12" >
+                                <div class="form-group">
+                                    <label for="confirm-password" class="control-label">Confirm new password</label>
+                                    <input type="password" class="form-control" id="confirm-password">
+                                </div>
+                            </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <button class="btn btn-default">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Change password</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

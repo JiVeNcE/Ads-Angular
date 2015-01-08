@@ -38,7 +38,8 @@ angularAds.config(function ($routeProvider) {
             controller: 'UserEditAdController'
         });
         $routeProvider.when('/user/profile', {
-            templateUrl: 'templates/user/edit-profile.html'
+            templateUrl: 'templates/user/edit-profile.html',
+            controller: 'EditUserProfileController'
 
         });
         $routeProvider.when('/unauthorized', {

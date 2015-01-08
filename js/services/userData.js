@@ -70,6 +70,16 @@ angularAds.factory('userService',
                     headers: authService.getAuthHeaders()
                 };
                 $http(request).success(success).error(error);
+            },
+
+            getUserProfile: function (data, success, error) {
+                var request = {
+                    method: 'GET',
+                    url: baseUrl + 'user/profile',
+                    headers: authService.getAuthHeaders(),
+                    data: data
+                };
+                $http(request).success(success).error(error);
             }
         }
     }
