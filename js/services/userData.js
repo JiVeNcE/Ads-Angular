@@ -16,7 +16,7 @@ angularAds.factory('userService',
             getUserAds: function (params, success, error) {
                 var request = {
                     method: 'GET',
-                    url: baseUrl + '/user/ads',
+                    url: baseUrl + 'user/ads',
                     headers: authService.getAuthHeaders(),
                     params: params
                 };
@@ -24,11 +24,23 @@ angularAds.factory('userService',
             },
 
             deactivateAd: function (id, success, error) {
-                // TODO
+                var request = {
+                    method: 'PUT',
+                    url: baseUrl + 'user/ads/deactivate/' + id,
+                    headers: authService.getAuthHeaders()
+
+                };
+                $http(request).success(success).error(error);
             },
 
-            publishAgainAd: function (id, success, error) {
-                // TODO
+            publishAd: function (id, success, error) {
+                var request = {
+                    method: 'PUT',
+                    url: baseUrl + 'user/ads/publishagain/' + id,
+                    headers: authService.getAuthHeaders()
+
+                };
+                $http(request).success(success).error(error);
             }
         }
     }

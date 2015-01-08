@@ -26,7 +26,8 @@ angularAds.config(function ($routeProvider) {
             controller: 'UserPublishNewAdController'
         });
         $routeProvider.when('/user/ads', {
-            templateUrl: 'templates/user/user-ads.html'
+            templateUrl: 'templates/user/user-ads.html',
+            controller: 'UserAdController'
 
         });
     $routeProvider.when('/user/profile', {
