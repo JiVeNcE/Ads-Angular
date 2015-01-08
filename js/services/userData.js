@@ -23,6 +23,15 @@ angularAds.factory('userService',
                 $http(request).success(success).error(error);
             },
 
+            getAdById: function (id, success, error) {
+                var request = {
+                    method: 'GET',
+                    url: baseUrl + 'user/ads/' + id,
+                    headers: authService.getAuthHeaders()
+                };
+                $http(request).success(success).error(error);
+            },
+
             deactivateAd: function (id, success, error) {
                 var request = {
                     method: 'PUT',

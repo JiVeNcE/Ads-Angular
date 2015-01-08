@@ -1,5 +1,5 @@
 
-var angularAds = angular.module('adsModule', ['ngRoute', 'cgNotify', 'ngResource', 'ui.bootstrap.pagination', 'angular-loading-bar']);
+var angularAds = angular.module('adsModule', ['ngRoute', 'cgNotify', 'ngResource', 'ui.bootstrap.pagination', 'angular-loading-bar', 'ngCookies']);
 
 angularAds.config(function ($routeProvider) {
         $routeProvider.when('/login', {
@@ -21,25 +21,29 @@ angularAds.config(function ($routeProvider) {
             templateUrl: 'templates/user/user-home.html',
             controller: 'AppController'
         });
+        $routeProvider.when('/user/ads', {
+            templateUrl: 'templates/user/user-ads.html',
+            controller: 'UserAdController'
+        });
         $routeProvider.when('/user/ads/publish', {
             templateUrl: 'templates/user/publish-new-ad.html',
             controller: 'UserPublishNewAdController'
         });
-        $routeProvider.when('/user/ads', {
-            templateUrl: 'templates/user/user-ads.html',
-            controller: 'UserAdController'
+        $routeProvider.when('/user/ads/delete/:id', {
+            templateUrl: 'templates/user/delete-ad.html',
+            controller: 'UserDeleteAdController'
+        });
+
+        $routeProvider.when('/user/profile', {
+            templateUrl: 'templates/user/edit-profile.html'
 
         });
-    $routeProvider.when('/user/profile', {
-        templateUrl: 'templates/user/edit-profile.html'
-
-    });
         $routeProvider.when('/unauthorized', {
             templateUrl: 'templates/unauthorized.html'
         });
-        $routeProvider.otherwise(
-            { redirectTo: '/' }
-        );
+        //$routeProvider.otherwise(
+        //    { redirectTo: '/' }
+        //);
 
 
     })

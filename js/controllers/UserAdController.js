@@ -1,7 +1,7 @@
 'use strict';
 
 angularAds.controller('UserAdController',
-    function ($scope, $location, townsService, categoriesService, userService, notify) {
+    function ($scope, $location, townsService, categoriesService, userService, $cookieStore, notify) {
 
 
         $scope.adsRequestParams = {
@@ -48,18 +48,10 @@ angularAds.controller('UserAdController',
             )
         };
 
-        $scope.deleteUserAd = function(id) {
-            userService.deleteAd(
-                id,
-                function success(data){
-                    alert('add deleted');
-                    $scope.getUserAd($scope.adsRequestParams);
-                },
-                function error(err){
-                    console.log('cannot delete' + err.error_description);
-                }
-            )
-        };
+      $scope.loadDeletePage = function(id) {
+          $cookieStore.put('adForDelete', id);
+          $location.path('/user/ads/delete/' + id);
+      };
 
         $scope.getUserAd();
     }
