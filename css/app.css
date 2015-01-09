@@ -1,6 +1,43 @@
-#ul {
-    list-style: none;
+
+#wrapper {
+    margin-left: 10px;
+    margin-right: 15px;
+    margin-top: 40px;
 }
+
+
+
+.user-panel-title {
+ border-bottom-color: #ffffff !important;
+}
+
+.list-group-item {
+    font-size: 15px;
+    cursor: pointer !important;
+}
+
+.list-group-item:hover {
+    background-color: #008cba !important;
+    color: #ffffff !important;
+    border-bottom: 1px solid black !important;
+}
+
+.list-group-item.active {
+    color: #ffffff !important;
+    background-color: #008cba !important;
+    border-bottom: 1px solid black !important;
+}
+
+.nav-pills li a {
+    padding: 3px 85px 3px 15px !important;
+}
+
+
+.pagination {
+    margin-left: 101px;
+}
+
+
 
 .ad-image {
     max-width: 150px;
@@ -8,34 +45,43 @@
 }
 
 
-ul.sidebar-menu {
-    padding: 0px 5px;
-}
+/*ul.sidebar-menu {*/
+    /*padding: 0px 5px;*/
+/*}*/
 
-ul.sidebar-menu li {
-    list-style-type: none;
-    cursor: pointer;
-    border: 1px solid rgba(0,0,0,0);
-    padding: 2px;
-    color: #1c381c;
-}
+/*ul.sidebar-menu li {*/
+    /*list-style-type: none;*/
+    /*cursor: pointer;*/
+    /*border: 1px solid rgba(0,0,0,0);*/
+    /*padding: 2px;*/
+    /*color: #0d0238;*/
+/*}*/
 
-ul.sidebar-menu li:hover {
-    background: #9ec684; ;
-}
+/*ul.sidebar-menu li:hover {*/
+    /*background: #006ac6; ;*/
+/*}*/
 
-ul.sidebar-menu li.special {
-    font-style: italic;
-}
+/*ul.sidebar-menu li.special {*/
+    /*font-style: italic;*/
+/*}*/
 
-ul.sidebar-menu li.selected {
-    background: #DAA600;
-    border: 1px solid #7F6000;
-}
+/*ul.sidebar-menu li.selected {*/
+    /*background: #003cda;*/
+    /*border: 1px solid #000000;*/
+/*}*/
 
-ul.sidebar-menu li a, ul.sidebar-menu li a:focus {
-    outline: none;
-    display: block;
-    text-decoration: none;
-    color: #1c381c;
+/*ul.sidebar-menu li a, ul.sidebar-menu li a:focus {*/
+    /*outline: none;*/
+    /*display: block;*/
+    /*text-decoration: none;*/
+    /*color: #1c381c;*/
+/*}*/
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 40px;
+    background-color:#f5f5f5;
 }

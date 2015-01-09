@@ -12,6 +12,7 @@ angularAds.controller('MainController', function($scope, $rootScope, adsData, pa
             $scope.adsParams,
             function success(data) {
                 $scope.ads = data;
+                window.scrollTo(0, 0);
             },
             function error(err) {
                 console.log("gresgka" + err)

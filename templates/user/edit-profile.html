@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-6">
             <div class="well bs-component">
-                <form class="form-horizontal">
+                <form class="form-horizontal" name="userEditProfile">
                     <fieldset>
                         <legend class="text-center">Edit Profile</legend>
                         <div class="form-group">
@@ -41,7 +41,7 @@
                         <div class="form-group">
                             <div class="col-lg-10 col-lg-offset-2">
                                 <button class="btn btn-default">Cancel</button>
-                                <button type="submit" class="btn btn-primary">Update</button>
+                                <button type="submit" class="btn btn-primary" ng-click="editUserProfile(userEditProfile)">Update</button>
                             </div>
                         </div>
                     </fieldset>
@@ -50,32 +50,32 @@
         </div>
         <div class="col-md-4">
             <div class="well bs-component">
-                <form class="form-horizontal">
+                <form class="form-horizontal" name="userPassword">
                     <fieldset>
                         <legend class="text-center">Change Password</legend>
                             <div class="row center-block" >
                                 <div class="form-group col-md-12">
-                                    <label class="control-label" for="old-password">Old passwordt</label>
-                                    <input class="form-control " id="old-password" type="text">
+                                    <label class="control-label" for="old-password">Old password</label>
+                                    <input class="form-control " id="old-password" type="password" placeholder="Old password" data-ng-model="userProfilePassword.oldPassword">
                                 </div>
                             </div>
                             <div class="row center-block col-md-12" >
                                 <div class="form-group">
                                     <label for="new-password" class="control-label">New Password</label>
-                                    <input type="password" class="form-control" id="new-password">
+                                    <input type="password" class="form-control" id="new-password" placeholder="New Password" data-ng-model="userProfilePassword.newPassword">
                                 </div>
                             </div>
                             <div class="row center-block col-md-12" >
                                 <div class="form-group">
                                     <label for="confirm-password" class="control-label">Confirm new password</label>
-                                    <input type="password" class="form-control" id="confirm-password">
+                                    <input type="password" class="form-control" id="confirm-password" placeholder="Confirm new password" data-ng-model="userProfilePassword.confirmPassword">
                                 </div>
                             </div>
 
                         <div class="form-group">
                             <div class="col-lg-10 col-lg-offset-2">
                                 <button class="btn btn-default">Cancel</button>
-                                <button type="submit" class="btn btn-primary">Change password</button>
+                                <button type="submit" class="btn btn-primary" ng-click="changeUserPassword(userPassword)">Change password</button>
                             </div>
                         </div>
                     </fieldset>

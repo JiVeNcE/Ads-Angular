@@ -80,6 +80,26 @@ angularAds.factory('userService',
                     data: data
                 };
                 $http(request).success(success).error(error);
+            },
+
+            editUserProfile: function (data, success, error) {
+                var request = {
+                    method: 'PUT',
+                    url: baseUrl + 'user/profile',
+                    headers: authService.getAuthHeaders(),
+                    data: data
+                };
+                $http(request).success(success).error(error);
+            },
+
+            changeUserPassword: function (data, success, error) {
+                var request = {
+                    method: 'PUT',
+                    url: baseUrl + 'user/changepassword',
+                    headers: authService.getAuthHeaders(),
+                    data: data
+                };
+                $http(request).success(success).error(error);
             }
         }
     }

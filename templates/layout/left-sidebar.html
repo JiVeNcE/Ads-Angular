@@ -1,3 +1,5 @@
+
+
 <div class="panel panel-primary"  data-ng-if="authService.isAnonymous()" >
     <div class="panel-heading">
         <h4 class="panel-title">To publish a new
@@ -10,16 +12,20 @@
 </div>
 
 
-<div class="panel panel-primary"  data-ng-if="authService.isNormalUser()" >
-    <div class="panel-heading">
-        <h4 class="panel-title">Navigation.</h4>
-    </div>
-    <div class="panel-body text-center" >
-           <a href="#/">Home</a>
-           <a href="#/user/ads">My Ads</a>
-           <a href="#/user/ads/publish">Publish New Ad</a>
-           <a href="#/user/profile">Edit Profile</a>
-           <a ng-click="logout()">Logout</a>
+
+<div class="bs-component" data-ng-if="authService.isNormalUser()" ng-controller="AppController">
+    <div class="panel panel-primary">
+        <div class="panel-heading user-panel-title" >
+            <h4 class="panel-title text-center" >Navigation</h4>
+        </div>
+            <div class=" list-group">
+                <a class="list-group-item" ng-class="getClass('/')" href="#/">Home</a>
+                <a class="list-group-item" ng-class="getClass('/user/ads')"  href="#/user/ads">My Ads</a>
+                <a class="list-group-item" ng-class="getClass('/user/ads/publish')"  href="#/user/ads/publish">Publish New Ad</a>
+                <a class="list-group-item" ng-class="getClass('/user/profile')" href="#/user/profile">Edit Profile</a>
+                <a class="list-group-item" ng-click="logout()">Logout</a>
+            </div>
+        </div>
     </div>
 </div>
 

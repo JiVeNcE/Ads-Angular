@@ -1,17 +1,19 @@
 
-<div class="jumbotron" >
-    <div class="row">
-        <div class="col-md-2" ng-controller="AppController">
-            <div data-ng-include="'templates/layout/left-sidebar.html'"> </div>
-        </div>
+<div class="jumbotron">
+    <div>
+        <div class="row">
+            <div class="col-md-2" ng-controller="AppController">
+                <div data-ng-include="'templates/layout/left-sidebar.html'"> </div>
+            </div>
 
-        <div class="col-md-8" ng-controller="MainController" >
-            <div data-ng-include ="'templates/layout/all-ads-templ.html'"></div>
-        </div>
+            <div class="col-md-8" ng-controller="MainController" >
+                <div data-ng-include ="'templates/layout/all-ads-templ.html'"></div>
+            </div>
 
-        <div class="col-md-2">
-            <div data-ng-include ="'templates/layout/filter-category.html'"></div>
-            <div data-ng-include ="'templates/layout/filter-town.html'"></div>
+            <div class="col-md-2">
+                <div data-ng-include ="'templates/layout/filter-category.html'"></div>
+                <div data-ng-include ="'templates/layout/filter-town.html'"></div>
+            </div>
         </div>
     </div>
 </div>

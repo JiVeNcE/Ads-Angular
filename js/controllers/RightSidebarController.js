@@ -23,6 +23,8 @@ angularAds.controller('RightSidebarController',
             }
         );
 
+        $scope.selectedCategoryId = 'all';
+
         $scope.categoryClicked = function(clickedCategoryId) {
             $scope.selectedCategoryId = clickedCategoryId;
         };
@@ -32,9 +34,18 @@ angularAds.controller('RightSidebarController',
         };
 
 
+
         $scope.categoryClicked = function(clickedCategoryId) {
-            $scope.selectedCategoryId = clickedCategoryId;
+
+            if (clickedCategoryId) {
+                $scope.selectedCategoryId = clickedCategoryId;
+            } else {
+                $scope.selectedCategoryId = 'all';
+            }
+
             $rootScope.$broadcast("categorySelectionChanged", clickedCategoryId);
+
+
         };
 
         $scope.townClicked = function(clickedTownId) {

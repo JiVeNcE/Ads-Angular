@@ -45,21 +45,20 @@ angularAds.config(function ($routeProvider) {
         $routeProvider.when('/unauthorized', {
             templateUrl: 'templates/unauthorized.html'
         });
-        //$routeProvider.otherwise(
-        //    { redirectTo: '/' }
-        //);
+        $routeProvider.otherwise(
+            { redirectTo: '/' }
+        );
 
 
     })
     .constant('baseUrl', 'http://softuni-ads.azurewebsites.net/api/')
-    .constant('pageSize', 7)
+    .constant('pageSize', 1)
     .run(function ($rootScope, $location, authService) {
-        $rootScope.$on('$locationChangeStart', function (event) {
+        $rootScope.$on('$locationChangeStart', function (event, next) {
            var path =  $location.path();
-            if ( !authService.isLoggedIn() && path !== '/login' && path !== '/register' && path !== '/')  {
+           if ( !authService.isLoggedIn() && path !== '/login' && path !== '/register' && path !== '/')  {
                 $location.path('/unauthorized');
-            }
-
+           }
         });
     });
 
