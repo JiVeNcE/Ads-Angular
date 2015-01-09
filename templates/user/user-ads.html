@@ -1,54 +1,89 @@
-<div class="col-md-2" ng-controller="AppController">
-    <div data-ng-include="'templates/layout/left-sidebar.html'"> </div>
-</div>
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-2" ng-controller="AppController">
+            <div data-ng-include="'templates/layout/left-sidebar.html'"> </div>
+        </div>
 
-<ul id="ul">
-    <li ng-repeat="ad in userAds.ads">
-        <div class="container well">
-            <div class="row">
-                <div class="col-md-7">
-                    <h3 class="pull-left">
-                        {{ad.title}}
-                    </h3>
-                </div>
-                <div class="col-md-5">
-                       <span class="pull-right">
-                           {{ad.date | date: 'dd-MMM-yy'}}
-                       </span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <img class="ad-image" src="" ng-src="{{ad.imageDataUrl}}" >
-                </div>
-                <div class="col-md-8">
-                    <div>
-                        Text:  {{ad.text}}<br/>
-                        status:  {{ad.status}}<br/>
-                        Category:  {{ad.categoryName}}<br/>
-                        Town:  {{ad.townName}}<br/>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div ng-switch="ad.status">
-                    <div ng-switch-when="Published"> <a type="submit" href="" class="btn btn-primary" data-ng-click="deactivateAdStatus(ad.id)">Deactivate</a>
-                    </div>
-                    <div ng-switch-when="WaitingApproval" ><a type="submit" href="" class="btn btn-primary" data-ng-click="deactivateAdStatus(ad.id)">Deactivate</a>
-                    </div>
-                    <div ng-switch-when="Inactive">
-                        <div class='form-group'><a type="submit" href="" class="btn btn-primary" data-ng-click="loadEditPage(ad.id)">Edit</a>
+        <div class="col-md-10" >
+            <div ng-repeat="ad in userAds.ads" data-ng-cloak>
+                <div class="panel panel-primary">
+                    <div class="row">
+                        <div class="col-md-8  ad-line">
+                            <div class="row">
+                                <div class="col-md-7 panel-body user-ad-title">
+                                    <h3>
+                                        {{ad.title}}
+                                    </h3>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <span class="pull-right">
+                                       {{ad.date | date: 'dd-MMM-yyyy'}}
+                                   </span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3 image-container">
+                                    <img src="" data-ng-src="{{ad.imageDataUrl}}">
+                                    <img src="" alt="" data-ng-if="!ad.imageDataUrl" data-ng-src="imgs/no-image.jpg"/>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class='well'>
+                                        {{ad.text}}
+                                    </div>
+                                    <div class='row'>
+                                        <div class='col-md-3 '>
+                                            Category:
+                                        </div>
+                                        <div class='col-md-9 '>
+                                            <div class='form-control'>{{ad.categoryName}}</div>
+                                            </br>
+                                        </div>
+                                        <div class='col-md-3'>
+                                            Town:
+                                        </div>
+                                        <div class='col-md-9'>
+                                            <div class='form-control'>{{ad.townName}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class='form-group'><a type="submit" href="" class="btn btn-primary" data-ng-click="publishAgainAd(ad.id)">Publish Again</a>
-                        </div>
-                        <div class='form-group'><a type="submit" data-ng-click="loadDeletePage(ad.id)" class="btn btn-primary" data->Delete</a>
+
+                        <div class="col-md-4" >
+                            <div class="panel-body text-center">
+                                <span>Status</span>
+                            </div>
+                            <div class='form-control ad-status text-center'>
+                                {{ad.status}}
+                            </div>
+
+                            <div ng-switch="ad.status" class="text-center" ng-controller="UserDeleteAdController">
+                                <div ng-switch-when="Published"> <a type="submit" href="" class="btn btn-primary btn-ads" data-ng-click="deactivateAdStatus(ad.id)">Deactivate</a>
+                                </div>
+                                <div ng-switch-when="WaitingApproval" ><a type="submit" href="" class="btn btn-primary btn-ads" data-ng-click="deactivateAdStatus(ad.id)">Deactivate</a>
+                                </div>
+                                <div ng-switch-when="Inactive">
+                                    <div class='form-group'><a type="submit" href="" class="btn btn-primary btn-ads" data-ng-click="loadEditPage(ad.id)">Edit</a>
+                                    </div>
+                                    <div class='form-group'><a type="submit" href="" class="btn btn-primary btn-ads" data-ng-click="publishAgainAd(ad.id)">Publish Again</a>
+                                    </div>
+                                    <div class='form-group'><a type="submit"  data-ng-click="openModal(ad.id, 'Delete')" class="btn btn-primary btn-ads" data->Delete</a>
+                                    </div>
+                                </div>
+                                <div ng-switch-when="Rejected"> Rejected
+                                </div>
+                                <div ng-switch-default>Unknown</div>
+                            </div>
                         </div>
                     </div>
-                    <div ng-switch-when="Rejected"> Rejected
-                    </div>
-                    <div ng-switch-default>Unknown</div>
+
+
+
                 </div>
             </div>
         </div>
-    </li>
-</ul>
+    </div>
+</div>

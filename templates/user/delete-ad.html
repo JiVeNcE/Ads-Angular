@@ -1,63 +1,50 @@
 
 
-
-
-
-
-<div class="col-md-2" ng-controller="AppController">
-    <div data-ng-include="'templates/layout/left-sidebar.html'"> </div>
+<div class="modal-header">
+    <h3 class="modal-title">Are you sure you want to {{action.toLowerCase()}} this ad.</h3>
 </div>
 
-<div class='container '>
+<div class="modal-body">
     <div class="panel panel-success">
         <div class='panel-body'>
             <div class='panel-heading centered'><legend>Confirm Deleting Ad?</legend></div>
             <div class='row'>
-                <div class='col-md-7'>
-                    <h3 class='pull-left'>
-                        {{adForDelete.title}}
-                    </h3>
+                <div class="col-md-8 col-sm-8 col-xs-12 delete-title-ad " >
+                    <h3 class="ad-title">{{currentAd.title}}</h3>
                 </div>
-                <div class='col-md-5'>
-					<span class='pull-right'>
-						{{adForDelete.date | date:'dd-MMM-yyyy'}}
-					</span>
+                <div class="col-md-4 col-sm-4 col-xs-12 pull-right">
+                    <span class="text-info pull-right"> {{currentAd.date | date:"EEE dd-MMM-yyyy"}} </span>
                 </div>
             </div>
             <div class='row'>
-                <div class='col-md-4 image-container'>
-                    <img src="" data-ng-src="{{adForDelete.imageDataUrl}}">
+                <div class='col-md-3 image-container'>
+                    <img src="" data-ng-src="{{currentAd.imageDataUrl}}">
                 </div>
-                <div class='col-md-8'>
+                <div class='col-md-7'>
                     <div class='well'>
-                        {{adForDelete.text}}
+                        {{currentAd.text}}
                     </div>
                     <div class='row'>
                         <div class='col-md-3 '>
                             Category:
                         </div>
                         <div class='col-md-9 '>
-                            <div class='form-control'>{{adForDelete.categoryName}}</div>
+                            <div class='form-control'>{{currentAd.categoryName}}</div>
                         </div>
                         <div class='col-md-3'>
                             Town:
                         </div>
                         <div class='col-md-9'>
-                            <div class='form-control'>{{adForDelete.townName}}</div>
+                            <div class='form-control'>{{currentAd.townName}}</div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-lg-1 col-lg-offset-4">
-                    <button type="submit" class="btn btn-primary btn-lg" data-ng-click='deleteUserAd(adForDelete.id)'>DELETE</button>
-                </div>
-                <div class="col-lg-1 col-lg-offset-1">
-                    <a href='#/user/ads' class="btn btn-default btn-lg">Cancel</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
+<div class="modal-footer text-center" >
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

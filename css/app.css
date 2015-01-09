@@ -50,6 +50,42 @@
     max-height: 150px;
 }
 
+.image-container  {
+    border: 1px solid black;
+    margin-left: 25px;
+}
+.image-container img {
+    width: 100%;
+    height: 100%;
+}
+
+.btn-ads {
+    width: 150px !important;
+}
+
+.ad-status {
+    width: 150px !important;
+    margin-bottom: 15px;
+    margin-left: 97px;
+}
+.modal {
+    display: block;
+}
+
+.ad-line {
+    border-right: 1px solid #008cba;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.user-ad-title{
+    margin-left: 10px !important;
+}
+
+.delete-title-ad {
+    word-wrap: break-word;
+}
+
 
 .footer {
     position: fixed;

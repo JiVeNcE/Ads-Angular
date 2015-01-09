@@ -1,27 +1,47 @@
 'use strict';
 
 angularAds.controller('UserDeleteAdController',
-    function ($scope, $location, townsService, $cookieStore, categoriesService, userService, notify) {
+    function ($scope, $location, townsService, $cookieStore, $modal, categoriesService, userService, notify, $log) {
 
-        if (!$cookieStore.get('adForDelete')) {
-            $location.path('/user/ads');
-        } else {
-            // console.log($cookieStore.get('adForDelete'));
-            adForDelete();
-        }
+        //if (!$cookieStore.get('adForDelete')) {
+        //    $location.path('/user/ads');
+        //} else {
+        //    // console.log($cookieStore.get('adForDelete'));
+        //    adForDelete();
+        //}
 
-        function adForDelete() {
-            var id = $cookieStore.get('adForDelete');
-            userService.getAdById(
-                id,
-                function success(data){
-                    $scope.adForDelete = data;
-                },
-                function error(err){
-                    console.log('cannot delete' + err.error_description);
+        //function adForDelete() {
+        //    var id = $cookieStore.get('adForDelete');
+        //    userService.getAdById(
+        //        id,
+        //        function success(data){
+        //            $scope.adForDelete = data;
+        //        },
+        //        function error(err){
+        //            console.log('cannot delete2' + err.error_description);
+        //        }
+        //    )
+        //}
+
+
+        $scope.openModal = function(id, action) {
+            var modalInstance = $modal.open({
+                templateUrl: './templates/user/delete-ad.html',
+                controller: 'ModalController',
+                backdrop: false,
+                keyboard: false,
+                resolve: {
+                    id: function() {
+                        return id;
+                    },
+                    action: function() {
+                        return action;
+                    }
                 }
-            )
-        }
+            });
+        };
+
+
 
         $scope.deleteUserAd = function() {
             var id = $cookieStore.get('adForDelete');
