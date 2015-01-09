@@ -24,6 +24,7 @@ angularAds.controller('RightSidebarController',
         );
 
         $scope.selectedCategoryId = 'all';
+        $scope.selectedTownId= 'all';
 
         $scope.categoryClicked = function(clickedCategoryId) {
             $scope.selectedCategoryId = clickedCategoryId;
@@ -49,7 +50,11 @@ angularAds.controller('RightSidebarController',
         };
 
         $scope.townClicked = function(clickedTownId) {
-            $scope.selectedTownId = clickedTownId;
+            if (clickedTownId) {
+                $scope.selectedTownId = clickedTownId;
+            } else {
+                $scope.selectedTownId = 'all';
+            }
             $rootScope.$broadcast("townSelectionChanged", clickedTownId);
         };
 
