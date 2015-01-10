@@ -33,6 +33,15 @@
                                 </div>
 
 
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label" for="town">Town:</label>
+                                    <select class="form-control" id="town" ng-model="adData.townId">
+                                        <option value="null">(None)</option>
+                                        <option ng-repeat="t in towns" value="{{t.id}}">{{t.name}}</option>
+                                    </select>
+                                </div>
+
+
                             </div>
 
                             <div class="col-md-1">

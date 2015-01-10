@@ -52,7 +52,7 @@ angularAds.config(function ($routeProvider) {
 
     })
     .constant('baseUrl', 'http://softuni-ads.azurewebsites.net/api/')
-    .constant('pageSize', 6)
+    .constant('pageSize', 2)
     .run(function ($rootScope, $location, authService) {
         $rootScope.$on('$locationChangeStart', function (event, next) {
            var path =  $location.path();

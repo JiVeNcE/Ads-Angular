@@ -1,29 +1,39 @@
-<div class="col-md-2" ng-controller="AppController">
-    <div data-ng-include="'templates/layout/left-sidebar.html'"> </div>
-</div>
 
-<div class="well bs-component">
-    <form class="form-horizontal" >
-        <fieldset>
-            <legend>Login</legend>
-            <div class="form-group">
-                <label for="inputUsername" class="col-lg-2 control-label">Username:</label>
-                <div class="col-lg-10">
-                    <input type="text" class="form-control" id="inputUsername" placeholder="Username" ng-model="userData.username">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputPassword" class="col-lg-2 control-label">Password:</label>
-                <div class="col-lg-10">
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="userData.password">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-lg-10 col-lg-offset-2">
-                    <button type="submit" class="btn btn-primary" ng-click="login(userData)">Login</button>
-                    <span><a href="#/register">Register here</a> </span>
-                </div>
-            </div>
-        </fieldset>
-    </form>
-    <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div></div>
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-2" ng-controller="AppController">
+            <div data-ng-include="'templates/layout/left-sidebar.html'"> </div>
+        </div>
+
+
+        <div class="col-md-6">
+            <div class="well bs-component">
+                <form class="form-horizontal" >
+                    <fieldset>
+                        <legend>Login</legend>
+                        <div class="form-group">
+                            <label for="inputUsername" class="col-lg-2 control-label">Username:</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="inputUsername" placeholder="Username" ng-model="userData.username">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword" class="col-lg-2 control-label">Password:</label>
+                            <div class="col-lg-10">
+                                <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="userData.password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <button type="submit" class="btn btn-primary" ng-click="login(userData)">Login</button>
+                                <span><a href="#/register">Register here</a> </span>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div></div>
+        </div>
+    </div>
+
+</div>

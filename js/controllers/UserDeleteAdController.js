@@ -6,16 +6,16 @@ angularAds.controller('UserDeleteAdController',
         //if (!$cookieStore.get('adForDelete')) {
         //    $location.path('/user/ads');
         //} else {
-        //    // console.log($cookieStore.get('adForDelete'));
-        //    adForDelete();
+        //     console.log($cookieStore.get('adForDelete'));
         //}
-
+        //
         //function adForDelete() {
         //    var id = $cookieStore.get('adForDelete');
         //    userService.getAdById(
         //        id,
         //        function success(data){
-        //            $scope.adForDelete = data;
+        //            $scope.currentAd = data;
+        //            console.log( $scope.currentAd)
         //        },
         //        function error(err){
         //            console.log('cannot delete2' + err.error_description);
@@ -43,19 +43,19 @@ angularAds.controller('UserDeleteAdController',
 
 
 
-        $scope.deleteUserAd = function() {
-            var id = $cookieStore.get('adForDelete');
-            userService.deleteAd(
-                id,
-                function success(data){
-                    alert('ad deleted');
-                    $location.path('/user/ads')
-                },
-                function error(err){
-                    console.log('cannot delete' + err.error_description);
-                }
-            )
-        }
+        //$scope.deleteUserAd = function() {
+        //    var id = $cookieStore.get('adForDelete');
+        //    userService.deleteAd(
+        //        id,
+        //        function success(data){
+        //            alert('ad deleted');
+        //            $location.path('/user/ads')
+        //        },
+        //        function error(err){
+        //            console.log('cannot delete' + err.error_description);
+        //        }
+        //    )
+        //}
 
 
     }

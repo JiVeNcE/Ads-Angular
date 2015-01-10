@@ -1,12 +1,12 @@
-angularAds.controller('ModalController', function modalController($scope, $rootScope, $route, $cookieStore, $modalInstance, userService, id, action) {
+angularAds.controller('ModalController', function modalController($scope, $rootScope, $route, $cookieStore, $modalInstance, userService, id, action, notify) {
     $scope.id = id;
     $scope.action = action;
 
     //if (!$cookieStore.get('adForDelete')) {
     //    $location.path('/user/ads');
     //} else {
-    //    // console.log($cookieStore.get('adForDelete'));
-    //    adForDelete();
+    //    console.log($cookieStore.get('adForDelete'));
+    //   // adForDelete();
     //}
 
 
@@ -15,6 +15,7 @@ angularAds.controller('ModalController', function modalController($scope, $rootS
         id,
         function (data) {
             $scope.currentAd = data;
+            console.log(  $scope.currentAd)
         }, function (error) {
             alert('greshka')
         });
@@ -26,24 +27,25 @@ angularAds.controller('ModalController', function modalController($scope, $rootS
          $modal reslove functions */
         switch (action) {
             case 'Deactivate':
-                var id = $cookieStore.get('adForDelete');
                 userService.getAdById(
                     id,
                     function success(data) {
-                        $scope.adForDelete = data;
+                        $scope.currentAd = data;
                     },
                     function error(err) {
-                        console.log('cannot delete2' + err.error_description);
-                    }
-                )
+                        console.log('cannot Deactivate' + err.error_description);
+                    });
                 break;
             case 'Delete':
-                userService.deleteAd(id).then(function (data) {
-                    $route.reload();
-                    $rootScope.$broadcast('alertMessage', data.message);
-                }, function (error) {
-                    $rootScope.$broadcast('alertMessage');
-                });
+                userService.deleteAd(
+                    id,
+                    function success (data) {
+                        $route.reload();
+                        notify('Ad Deleted Successful')
+                    },
+                    function error (err) {
+                        console.log('Cannot Delete ad' + err.error_description)
+                    });
                 break;
             case 'Publish again':
                 adsData.publishAgainAd(id).then(function (data) {

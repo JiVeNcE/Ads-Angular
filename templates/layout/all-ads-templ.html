@@ -1,37 +1,69 @@
-
-        <ul id="ul" >
-            <li ng-repeat="ad in ads.ads">
-                <div class="container well">
-                    <div class="row">
-                        <div class="col-md-7">
-                            <h3 class="pull-left">
-                                {{ad.title}}
-                            </h3>
-                        </div>
-                        <div class="col-md-5">
-                               <span class="pull-right">
-                                   {{ad.date | date: 'dd-MMM-yy'}}
-                               </span>
-                        </div>
+<div ng-repeat="ad in ads.ads" data-ng-cloak>
+    <div class="panel panel-primary">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-7 panel-body">
+                        <h3 class="user-ad-title">
+                            {{ad.title}}
+                        </h3>
                     </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img class="ad-image" src="" ng-src="{{ad.imageDataUrl}}" >
+
+                    <div class="col-md-4">
+                        <span class="date-panel  pull-right"  >
+                           {{ad.date | date: 'dd-MMM-yyyy'}}
+                       </span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 image-container">
+                        <img src="" data-ng-src="{{ad.imageDataUrl}}" class="ad-image img-responsive">
+                        <img src="" alt="" data-ng-if="!ad.imageDataUrl" class="ad-image img-responsive" data-ng-src="img/no-image-featured-image.png"/>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class='well word-wrap-break'>
+                            {{ad.text}}
                         </div>
-                        <div class="col-md-8">
-                            <div>
-                                {{ad.text}}
+                        <div class='row'>
+                            <div class='col-md-3 '>
+                                Name:
                             </div>
-                            <div>
-                                Name:  {{ad.ownerName}}<br/>
-                                Email: {{ad.ownerEmail}}<br/>
-                                tel.   {{ad.ownerPhone}}<br/>
+                            <div class='col-md-9 '>
+                                <div class='form-control'>{{ad.ownerEmail}}</div>
+                                </br>
+                            </div>
+                            <div class='col-md-3'>
+                                Email:
+                            </div>
+                            <div class='col-md-9'>
+                                <div class='form-control'>{{ad.ownerEmail}}</div>
+                                </br>
+                            </div>
+                            <div class='col-md-3'>
+                                Tel:
+                            </div>
+                            <div class='col-md-9'>
+                                <div class='form-control'>{{ad.ownerPhone}}</div>
+                                </br>
                             </div>
                         </div>
                     </div>
                 </div>
-            </li>
-        </ul>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
         <div class="pagination">
                 <pagination total-items="ads.numItems"
                             ng-model="adsParams.startPage"

@@ -9,7 +9,7 @@
         <div class='panel-body'>
             <div class='panel-heading centered'><legend>Confirm Deleting Ad?</legend></div>
             <div class='row'>
-                <div class="col-md-8 col-sm-8 col-xs-12 delete-title-ad " >
+                <div class="col-md-8 word-wrap-break " >
                     <h3 class="ad-title">{{currentAd.title}}</h3>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12 pull-right">
@@ -20,21 +20,21 @@
                 <div class='col-md-3 image-container'>
                     <img src="" data-ng-src="{{currentAd.imageDataUrl}}">
                 </div>
-                <div class='col-md-7'>
+                <div class='col-md-7 word-wrap-break' >
                     <div class='well'>
                         {{currentAd.text}}
                     </div>
                     <div class='row'>
-                        <div class='col-md-3 '>
+                        <div class='col-md-4 pull-left '>
                             Category:
                         </div>
-                        <div class='col-md-9 '>
+                        <div class='col-md-8 '>
                             <div class='form-control'>{{currentAd.categoryName}}</div>
                         </div>
-                        <div class='col-md-3'>
+                        <div class='col-md-4'>
                             Town:
                         </div>
-                        <div class='col-md-9'>
+                        <div class='col-md-8'>
                             <div class='form-control'>{{currentAd.townName}}</div>
                         </div>
                     </div>
