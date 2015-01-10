@@ -1,65 +1,77 @@
-<div class="col-md-2" ng-controller="AppController">
-    <div data-ng-include="'templates/layout/left-sidebar.html'"> </div>
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-2" ng-controller="AppController">
+            <div data-ng-include="'templates/layout/left-sidebar.html'"> </div>
+        </div>
+
+
+        <div class="col-md-7 col-md-offset-1">
+            <div class="well bs-component">
+                <form class="form-horizontal" name="registerForm" role="form">
+                    <fieldset>
+                        <legend class="text-center">User Registration</legend>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <label for="username" class="col-md-1 control-label pull-left label-on-top">Username:</label>
+                                            <input type="username" class="form-control col-md-3" id="username" placeholder="username" ng-model="userData.username" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <label for="inputPassword" class=" col-md-1 control-label pull-left label-on-top">Password:</label>
+                                            <input type="password" class=" col-md-3 form-control" id="inputPassword" placeholder="Password" ng-model="userData.password" required>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="inputConfPassword" class="col-lg-5 control-label label-on-top conf-password" >Confirm password:</label>
+                                            <input type="password" class="col-md-3 form-control" id="inputConfPassword" placeholder="Confirm password" ng-model="userData.confirmPassword" required>
+                                        </div>
+                                    </div>
+
+
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <label for="inputName" class="col-md-1 control-label label-on-top">Name:</label>
+                                        <input type="text" class="col-md-3 form-control" id="inputName" placeholder="Name" ng-model="userData.name" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="inputEmail" class=" col-md-1 control-label label-on-top">Email:</label>
+                                        <input type="email" class="col-md-3 form-control" id="inputEmail" placeholder="Email" ng-model="userData.email" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <label for="inputPhone" class="col-md-1 control-label label-on-top">Phone:</label>
+                                        <input type="tel" class="col-md-3 form-control" id="inputPhone" placeholder="Phone" ng-model="userData.phone" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="select" class="col-md-1 control-label label-on-top">Town:</label>
+                                        <select ng-model="userData.townId"  class="col-md-3 form-control" id="select" >
+                                            <option value="null">-- choose town --</option>
+                                            <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+
+                        <div class="form-group">
+                            <div class="col-lg-2 col-lg-offset-4">
+                              <a class="btn btn-default" href="#/">Cancel</a>
+                            </div>
+                            <div class="col-lg-4">
+                                <button type="submit" class="btn btn-primary" ng-click="register(userData)">Submit</button>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                </form>
+                <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div></div>
+        </div>
+    </div>
 </div>
-
-
-<div class="well bs-component">
-    <form class="form-horizontal" name="registerForm" role="form">
-        <fieldset>
-            <legend>User Registration</legend>
-            <div class="form-group">
-                <label for="inputRegUsername" class="col-lg-2 control-label">Username:</label>
-                <div class="col-lg-10">
-                    <input type="text" class="form-control" id="inputRegUsername" placeholder="Username" ng-model="userData.username" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputPassword" class="col-lg-2 control-label">Password:</label>
-                <div class="col-lg-10">
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="userData.password" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputConfPassword" class="col-lg-2 control-label">Confirm password:</label>
-                <div class="col-lg-10">
-                    <input type="password" class="form-control" id="inputConfPassword" placeholder="Confirm password" ng-model="userData.confirmPassword" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputName" class="col-lg-2 control-label">Name:</label>
-                <div class="col-lg-10">
-                    <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="userData.name" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputEmail" class="col-lg-2 control-label">Email:</label>
-                <div class="col-lg-10">
-                    <input type="email" class="form-control" id="inputEmail" placeholder="Email" ng-model="userData.email" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputPhone" class="col-lg-2 control-label">Phone:</label>
-                <div class="col-lg-10">
-                    <input type="tel" class="form-control" id="inputPhone" placeholder="Phone" ng-model="userData.phone" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="select" class="col-lg-2 control-label">Town:</label>
-                <div class="col-lg-10">
-                    <select ng-model="userData.townId"  class="form-control" id="select" >
-                        <option value="null">-- choose town --</option>
-                        <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-lg-10 col-lg-offset-2">
-                    <button class="btn btn-default" ><a href="#/">Cancel</a></button>
-                    <button type="submit" class="btn btn-primary" ng-click="register(userData)">Submit</button>
-                </div>
-            </div>
-        </fieldset>
-
-    </form>
-    <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div></div>

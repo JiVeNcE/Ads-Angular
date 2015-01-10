@@ -17,7 +17,7 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <span class="pull-right">
+                                    <span class="pull-right text-info">
                                        {{ad.date | date: 'dd-MMM-yyyy'}}
                                    </span>
                                 </div>
@@ -25,8 +25,8 @@
 
                             <div class="row">
                                 <div class="col-md-3 image-container">
-                                    <img src="" data-ng-src="{{ad.imageDataUrl}}">
-                                    <img src="" alt="" data-ng-if="!ad.imageDataUrl" data-ng-src="imgs/no-image.jpg"/>
+                                    <img src="" class="ad-image img-responsive" data-ng-src="{{ad.imageDataUrl}} ">
+                                    <img src="" class="ad-image img-responsive" alt="" data-ng-if="!ad.imageDataUrl" data-ng-src="imgs/no-image.jpg"/>
                                 </div>
 
                                 <div class="col-md-8">

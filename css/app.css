@@ -17,8 +17,18 @@
     font-size: 14px;
 }
 
-.ad-image-container {
 
+.label-on-top {
+    display: block;
+    margin-bottom:7px !important;
+    margin-left: 0px !important;
+    padding-left: 0px !important;
+    float:left !important;
+
+}
+
+.conf-password {
+    text-align: left !important;
 }
 
 .list-group-item {
@@ -64,6 +74,10 @@
     margin-left: 25px;
     padding: 0;
     height: auto;
+}
+
+.text-info {
+    padding-top: 6px !important;
 }
 
 .btn-ads {
