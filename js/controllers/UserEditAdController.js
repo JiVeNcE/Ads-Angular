@@ -33,7 +33,8 @@ angularAds.controller('UserEditAdController',
                 function error(err){
                     console.log('cannot edit' + err);
                 }
-            )
+            );
+
         };
 
 

@@ -19,7 +19,8 @@ angularAds.controller('UserAdController',
                 function error(err) {
                     console.log('no ads' + err.error_description);
                 }
-            )
+            );
+            $scope.clickedMyAds = true;
         };
 
         $scope.deactivateAdStatus = function(id) {

@@ -9,6 +9,7 @@ angularAds.controller('AppController',
             authService.logout();
             notify("Logout successful");
             $location.path('/');
+            $scope.clickedMyAds = false;
         };
 
         $scope.isAnonymous = function() {

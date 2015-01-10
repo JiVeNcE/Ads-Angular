@@ -29,6 +29,7 @@ angularAds.controller('EditUserProfileController', function($scope, $route, $loc
                 console.log('cannot load user profile' + err);
             }
         )
+        $scope.clickedMyAds = true;
     };
 
     $scope.changeUserPassword = function() {
