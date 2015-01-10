@@ -7,7 +7,7 @@
 <div class="modal-body">
     <div class="panel panel-success">
         <div class='panel-body'>
-            <div class='panel-heading centered'><legend>Confirm Deleting Ad?</legend></div>
+            <div class='panel-heading centered'><legend>Confirm {{action.toLowerCase()}} Ad?</legend></div>
             <div class='row'>
                 <div class="col-md-8 word-wrap-break " >
                     <h3 class="ad-title">{{currentAd.title}}</h3>
@@ -19,6 +19,7 @@
             <div class='row'>
                 <div class='col-md-3 image-container'>
                     <img src="" class="ad-image img-responsive" data-ng-src="{{currentAd.imageDataUrl}}">
+                    <img src="" class="ad-image img-responsive" alt="" data-ng-if="!currentAd.imageDataUrl" data-ng-src="img/no_image.jpg"/>
                 </div>
                 <div class='col-md-7 word-wrap-break' >
                     <div class='well'>

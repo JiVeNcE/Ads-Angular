@@ -15,7 +15,6 @@ angularAds.controller('ModalController', function modalController($scope, $rootS
         id,
         function (data) {
             $scope.currentAd = data;
-            console.log(  $scope.currentAd)
         }, function (error) {
             alert('greshka')
         });
@@ -27,13 +26,14 @@ angularAds.controller('ModalController', function modalController($scope, $rootS
          $modal reslove functions */
         switch (action) {
             case 'Deactivate':
-                userService.getAdById(
+                userService.deactivateAd(
                     id,
-                    function success(data) {
-                        $scope.currentAd = data;
+                    function success (data) {
+                        $route.reload();
+                        notify('Ad Deactivate Successful')
                     },
-                    function error(err) {
-                        console.log('cannot Deactivate' + err.error_description);
+                    function error (err) {
+                        console.log('Cannot Deactivate this ad' + err.error_description)
                     });
                 break;
             case 'Delete':
@@ -48,12 +48,13 @@ angularAds.controller('ModalController', function modalController($scope, $rootS
                     });
                 break;
             case 'Publish again':
-                adsData.publishAgainAd(id).then(function (data) {
+                userService.publishAd(
+                    id,
+                    function success (data) {
                     $route.reload();
-                    $rootScope.$broadcast('alertMessage', data.message +
-                    "It was moved into your Waiting Approval Ads.");
+                    notify('Ad published Successful');
                 }, function (error) {
-                    $rootScope.$broadcast('alertMessage');
+                        console.log('Cannot Publish ad' + err.error_description)
                 });
                 break;
             default:

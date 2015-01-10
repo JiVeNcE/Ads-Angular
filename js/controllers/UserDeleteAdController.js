@@ -26,7 +26,7 @@ angularAds.controller('UserDeleteAdController',
 
         $scope.openModal = function(id, action) {
             var modalInstance = $modal.open({
-                templateUrl: './templates/user/delete-ad.html',
+                templateUrl: './templates/user/user-modal.html',
                 controller: 'ModalController',
                 backdrop: false,
                 keyboard: false,

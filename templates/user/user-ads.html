@@ -26,7 +26,7 @@
                             <div class="row">
                                 <div class="col-md-3 image-container">
                                     <img src="" class="ad-image img-responsive" data-ng-src="{{ad.imageDataUrl}} ">
-                                    <img src="" class="ad-image img-responsive" alt="" data-ng-if="!ad.imageDataUrl" data-ng-src="imgs/no-image.jpg"/>
+                                    <img src="" class="ad-image img-responsive" alt="" data-ng-if="!ad.imageDataUrl" data-ng-src="img/no_image.jpg"/>
                                 </div>
 
                                 <div class="col-md-8">
@@ -61,14 +61,14 @@
                             </div>
 
                             <div ng-switch="ad.status" class="text-center" ng-controller="UserDeleteAdController">
-                                <div ng-switch-when="Published"> <a type="submit" href="" class="btn btn-primary btn-ads" data-ng-click="deactivateAdStatus(ad.id)">Deactivate</a>
+                                <div ng-switch-when="Published"> <a type="submit" href="" class="btn btn-primary btn-ads" data-ng-click="openModal(ad.id, 'Deactivate')">Deactivate</a>
                                 </div>
-                                <div ng-switch-when="WaitingApproval" ><a type="submit" href="" class="btn btn-primary btn-ads" data-ng-click="deactivateAdStatus(ad.id)">Deactivate</a>
+                                <div ng-switch-when="WaitingApproval" ><a type="submit" href="" class="btn btn-primary btn-ads" data-ng-click="openModal(ad.id, 'Deactivate')">Deactivate</a>
                                 </div>
                                 <div ng-switch-when="Inactive">
                                     <div class='form-group'><a type="submit" href="" class="btn btn-primary btn-ads" data-ng-click="loadEditPage(ad.id)">Edit</a>
                                     </div>
-                                    <div class='form-group'><a type="submit" href="" class="btn btn-primary btn-ads" data-ng-click="publishAgainAd(ad.id)">Publish Again</a>
+                                    <div class='form-group'><a type="submit" href="" class="btn btn-primary btn-ads" ng-click="openModal(ad.id, 'Publish again')">Publish Again</a>
                                     </div>
                                     <div class='form-group'><a type="submit"  data-ng-click="openModal(ad.id, 'Delete')" class="btn btn-primary btn-ads" data->Delete</a>
                                     </div>

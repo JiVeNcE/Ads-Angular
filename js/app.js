@@ -26,19 +26,19 @@ angularAds.config(function ($routeProvider) {
             controller: 'UserAdController'
         });
         $routeProvider.when('/user/ads/publish', {
-            templateUrl: 'templates/user/publish-new-ad.html',
+            templateUrl: 'templates/user/user-publish-new-ad.html',
             controller: 'UserPublishNewAdController'
         });
         $routeProvider.when('/user/ads/delete/:id', {
-            templateUrl: 'templates/user/delete-ad.html',
+            templateUrl: 'templates/user/user-modal.html',
             controller: 'UserDeleteAdController'
         });
         $routeProvider.when('/user/ads/edit/:id', {
-            templateUrl: 'templates/user/edit-ad.html',
+            templateUrl: 'templates/user/user-modal-edit-ad.html',
             controller: 'UserEditAdController'
         });
         $routeProvider.when('/user/profile', {
-            templateUrl: 'templates/user/edit-profile.html',
+            templateUrl: 'templates/user/user-edit-profile.html',
             controller: 'EditUserProfileController'
 
         });
