@@ -36,10 +36,11 @@
             <h4 class="panel-title text-center" >My Ads</h4>
         </div>
         <div class=" list-group">
-            <a class="list-group-item"  href="#/">All</a>
-            <a class="list-group-item"   href="#/user/ads">Published</a>
-            <a class="list-group-item"   href="#/user/ads/publish">Waiting Approval</a>
-            <a class="list-group-item"   href="#/user/profile">Rejected</a>
+            <a class="list-group-item" data-ng-click="selectAdStatus()" data-ng-class="{active: 'all' == adStatus}"  href >All</a>
+            <a class="list-group-item" data-ng-click="selectAdStatus('Published')" data-ng-class="{active: 'Published' == adStatus}" href >Published</a>
+            <a class="list-group-item" data-ng-click="selectAdStatus('WaitingApproval')" data-ng-class="{active: 'WaitingApproval' == adStatus}" href >Waiting Approval</a>
+            <a class="list-group-item" data-ng-click="selectAdStatus('Inactive')" data-ng-class="{active: 'Inactive' == adStatus}" href >Inactive</a>
+            <a class="list-group-item" data-ng-click="selectAdStatus('Rejected')" data-ng-class="{active: 'Rejected' == adStatus}" href >Rejected</a>
         </div>
     </div>
 </div>

@@ -1,9 +1,9 @@
 'use strict';
 
 angularAds.controller('UserPublishNewAdController',
-    function ($scope, $location, townsService, categoriesService, userService, notify) {
+    function ($scope, $location, $rootScope, townsService, categoriesService, userService, notify) {
 
-
+        $rootScope.pageTitle = "Publish New Ad";
         $scope.adData = {townId: null, categoryId: null};
         $scope.categories = categoriesService.getCategories();
         $scope.towns = townsService.getTowns();

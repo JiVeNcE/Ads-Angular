@@ -1,6 +1,7 @@
 angularAds.controller('MainController', function($scope, $rootScope, adsData, pageSize) {
 
     $rootScope.pageTitle = "Home";
+    $scope.loading = true;
 
     $scope.adsParams = {
         'startPage' : 1,
@@ -12,7 +13,9 @@ angularAds.controller('MainController', function($scope, $rootScope, adsData, pa
             $scope.adsParams,
             function success(data) {
                 $scope.ads = data;
+                $scope.numPages = data.numPages;
                 window.scrollTo(0, 0);
+                $scope.loading = false;
             },
             function error(err) {
                 console.log("gresgka" + err)

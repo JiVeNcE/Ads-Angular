@@ -17,10 +17,21 @@
                                     <input class="form-control" type="text" id="title" ng-model="adForEdit.title" required />
                                 </div>
 
-
                                 <div class="form-group">
                                     <label class="col-lg-2 control-label" for="text">Text:</label>
                                     <textarea class="form-control"  id="text" ng-model="adForEdit.text" required > </textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="image" class="control-label">Image:</label>
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                                <span class="btn btn-primary btn-file">Browse…
+                                                <input type="file" multiple="" id="image" onchange="angular.element(this).scope().fileSelected(this)" />
+                                                </span>
+                                            </span>
+                                                <input type="text" class="form-control image-title" readonly="" value="" />
+                                        </div>
                                 </div>
 
                                 <div class="form-group" data-ng-controller="RightSidebarController">
@@ -31,7 +42,6 @@
                                     </select>
                                 </div>
 
-
                                 <div class="form-group" data-ng-controller="RightSidebarController">
                                     <label class="col-lg-2 control-label" for="town">Town:</label>
                                     <select  class='form-control' name="townId" id="town"  ng-model="adForEdit.townId">
@@ -39,29 +49,35 @@
                                         <option value='' selected>Other</option>
                                     </select>
                                 </div>
-
-
                             </div>
 
                             <div class="col-md-1">
 
                             </div>
 
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="col-lg-2 control-label" for="imageInfo">Image:</label>
-                                    <input type="file" id="imageInfo" accept="image/*" class="form-control input-sm"
-                                           onchange="angular.element(this).scope().fileSelected(this)" />
+                            <div class="col-md-4" >
+                                <div class="row">
+                                    <div class='col-lg-9 publish-ad-image-container col-lg-offset-2'>
+                                        <img class="ad-image" id="thumbnil"  src="{{imageDataUrl}}" alt=""/>
+                                        <img src="" class="ad-image img-responsive" data-ng-if="!imageDataUrl"  data-ng-src="img/no_image.jpg"/>
+                                    </div>
                                 </div>
-
-                                <div class='form-group'>
-                                    <div ><a class='btn btn-primary   button-size' type='submit' href=""  data-ng-click="changeImage(imageDataUrl,imageform)" >Change  Image</a></div>
-                                    <div><a class='btn btn-primary  button-size' data-ng-click="deleteImage()"href="" >Delete  Image</a></div>
+                                <div class="row">
+                                    <hr>
                                 </div>
+                                <div class="row">
+                                    <div class='form-group'>
+                                        <div class="row text-center">
+                                            <div class="col-md-6">
+                                                <div ><a class='btn btn-primary   button-size' type='submit' href=""  data-ng-click="changeImage(imageDataUrl,imageform)" >Change Image</a></div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div><a class='btn btn-primary  button-size' data-ng-click="deleteImage()"href="" >Delete  Image</a></div>
+                                            </div>
+                                        </div>
 
-                                <div class='col-lg-4 publish-ad-image-container'>
-                                <img id="thumbnil"  src="{{imageDataUrl}}" alt=""/>
-                            </div>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -80,7 +96,6 @@
     </div>
 </div>
 
-<!--<script type="text/javascript" src='js/picturePreview.js'></script>-->
 
 
 

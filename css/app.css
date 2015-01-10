@@ -9,6 +9,10 @@
     list-style: none;
 }
 
+.centered {
+   margin-left: 28%;
+}
+
 .user-panel-title {
  border-bottom-color: #ffffff !important;
 }
@@ -84,9 +88,8 @@
 }
 
 .ad-status {
-    width: 150px !important;
     margin-bottom: 15px;
-    margin-left: 97px;
+    margin-right: 1px;
 }
 .modal {
     display: block;
@@ -106,6 +109,57 @@
     word-wrap: break-word;
 }
 
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    background: red;
+    cursor: inherit;
+    display: block;
+}
+
+input[readonly] {
+    background-color: white !important;
+    cursor: text !important;
+}
+
+.spinner  {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top:400px;
+    bottom: 0;
+    left: 0;
+    right: 10%;
+    margin:auto;
+}
+
+.spinner-user-ads  {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 2px;
+    right: 0;
+    margin:auto;
+}
+
+.spinner-gif{
+    width: 80px;
+    height: 80px;
+}
 
 .footer {
     position: fixed;

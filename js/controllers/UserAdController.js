@@ -1,26 +1,42 @@
 'use strict';
 
 angularAds.controller('UserAdController',
-    function ($scope, $location, townsService, categoriesService, userService, $cookieStore, notify) {
+    function ($scope, $location, $rootScope, townsService, categoriesService, userService, $cookieStore, notify) {
 
 
+        $rootScope.pageTitle = "My Ads";
         $scope.adsRequestParams = {
             startPage: 1,
             pageSize: 2,
             status: null
         };
 
+        $scope.selectAdStatus = function(status) {
+            if (status) {
+                $scope.adStatus = status;
+            } else {
+                $scope.adStatus = 'all';
+            }
+            $scope.adsRequestParams.status = status;
+            $scope.adsRequestParams.startPage = 1;
+            $scope.getUserAd($scope.adsRequestParams);
+        };
+
+
         $scope.getUserAd = function() {
             userService.getUserAds(
                 $scope.adsRequestParams,
                 function success(data) {
+                    console.log(data);
+                    console.log($scope.adsRequestParams);
                     $scope.userAds = data;
+                    $scope.clickedMyAds = true;
+                    $scope.numItems = data.numItems;
                 },
                 function error(err) {
                     console.log('no ads' + err.error_description);
                 }
-            );
-            $scope.clickedMyAds = true;
+            )
         };
 
         $scope.deactivateAdStatus = function(id) {

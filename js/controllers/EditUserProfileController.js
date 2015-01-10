@@ -1,6 +1,6 @@
-angularAds.controller('EditUserProfileController', function($scope, $route, $location , userService, notify) {
+angularAds.controller('EditUserProfileController', function($scope, $rootScope, $route, $location , userService, notify) {
 
-
+    $rootScope.pageTitle = "Edit User Profile";
 
     $scope.getUserProfile = function() {
         userService.getUserProfile(

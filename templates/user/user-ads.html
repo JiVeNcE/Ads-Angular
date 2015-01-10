@@ -1,17 +1,26 @@
+<div class="row" ng-if="loading">
+    <div class="spinner-user-ads" >
+        <img src="img/progressbar1.gif" alt="" class="spinner-gif">
+    </div>
+</div>
 <div class="jumbotron">
     <div class="row">
         <div class="col-md-2" ng-controller="AppController">
             <div data-ng-include="'templates/layout/left-sidebar.html'"> </div>
         </div>
 
-        <div class="col-md-10" >
+        <div data-ng-if="numItems == 0" class='well text-center'>
+            No ads found.
+        </div>
+
+        <div class="col-md-8 col-md-offset-1" >
             <div ng-repeat="ad in userAds.ads" data-ng-cloak>
                 <div class="panel panel-primary">
                     <div class="row">
                         <div class="col-md-8  ad-line">
                             <div class="row">
-                                <div class="col-md-7 panel-body">
-                                    <h3 class="user-ad-title">
+                                <div class="col-md-7 col-sm-7 col-md-7 panel-body">
+                                    <h3 class="user-ad-title word-wrap-break">
                                         {{ad.title}}
                                     </h3>
                                 </div>
@@ -53,14 +62,21 @@
                         </div>
 
                         <div class="col-md-4" >
-                            <div class="panel-body text-center">
-                                <span>Status</span>
-                            </div>
-                            <div class='form-control ad-status text-center'>
-                                {{ad.status}}
-                            </div>
+
 
                             <div ng-switch="ad.status" class="text-center" ng-controller="UserDeleteAdController">
+                                <div class="row ad-status">
+                                    <div clas="col-mid-3">
+                                        <div class="panel-body">
+                                            <span>Status</span>
+                                        </div>
+                                        <div class='col-md-12'>
+                                            <div class='form-control text-center'>{{ad.status}}</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
                                 <div ng-switch-when="Published"> <a type="submit" href="" class="btn btn-primary btn-ads" data-ng-click="openModal(ad.id, 'Deactivate')">Deactivate</a>
                                 </div>
                                 <div ng-switch-when="WaitingApproval" ><a type="submit" href="" class="btn btn-primary btn-ads" data-ng-click="openModal(ad.id, 'Deactivate')">Deactivate</a>
@@ -79,11 +95,21 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
+            </div>
+            <div class="pagination" ng-if='numItems > 1'>
+                <pagination total-items="numItems"
+                            ng-model="adsRequestParams.startPage"
+                            items-per-page="adsRequestParams.pageSize"
+                            ng-change="getUserAd()"
+                            max-size="9"
+                            boundary-links="true">
+                </pagination>
             </div>
         </div>
     </div>
+
 </div>
+
+
+

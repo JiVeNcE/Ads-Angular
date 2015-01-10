@@ -1,7 +1,9 @@
 'use strict';
 
 angularAds.controller('UserEditAdController',
-    function ($scope, $location, townsService, $cookieStore, categoriesService, $q, userService, notify) {
+    function ($scope, $rootScope, $location, townsService, $cookieStore, categoriesService, $q, userService, notify) {
+
+        $rootScope.pageTitle = "Edit Ad";
 
         if (!$cookieStore.get('adForEdit')) {
             $location.path('/user/ads');
