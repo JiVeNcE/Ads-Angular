@@ -13,19 +13,42 @@
                         <div class="form-group">
                             <label for="name" class="col-lg-2 control-label">Name</label>
                             <div class="col-lg-10">
-                                <input type="name" class="form-control" id="name" data-ng-model="userProfile.name">
+                                <input type='text' id='name' data-ng-model='userProfile.name' class='form-control' name='name' ng-minlength="4" ng-maxlength="32" ng-required="true">
+                                <div class="errors" ng-class="{ active: userEditProfile.name.$invalid }">
+                                    <div class="error ng-hide" ng-show="userEditProfile.name.$error.minlength">
+                                        <p>Provided name is too short!</p>
+                                    </div>
+                                    <div class="error ng-hide" ng-show="userEditProfile.name.$error.maxlength">
+                                        <p>Max name length is 32, please shorten it.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="email" class="col-lg-2 control-label">Email</label>
                             <div class="col-lg-10">
-                                <input type="email" class="form-control" id="email" data-ng-model="userProfile.email">
+                                <input type='text' data-ng-pattern="emailPattern" id='email' data-ng-model='userProfile.email'  class='form-control' name='email' ng-required="true" remote-validated="used">
+                                <div class="errors" ng-class="{ active: userEditProfile.email.$invalid }">
+                                    <div class="error ng-hide" ng-show="userEditProfile.email.$error.pattern">
+                                        <p>E-Mail seems invalid.</p>
+                                    </div>
+                                    <div class="error ng-hide" ng-show="userEditProfile.email.$error.used">
+                                        <p>E-Mail is already taken.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="phone" class="col-lg-2 control-label">Phone</label>
                             <div class="col-lg-10">
-                                <input type="phone" class="form-control" id="phone" data-ng-model="userProfile.phoneNumber">
+                                <input type='text' id='phone' data-ng-pattern="phonePattern" data-ng-model='userProfile.phoneNumber' class='form-control' name='phone'
+                                       ng-required="true">
+                                <div class="errors" ng-class="{ active: userEditProfile.phone.$invalid }" >
+                                    <div class="error ng-hide" ng-show="userEditProfile.phone.$error.pattern">
+                                        <p>Phone seems invalid.</p>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
 
@@ -40,8 +63,9 @@
                         </div>
                         <div class="form-group">
                             <div class="col-lg-10 col-lg-offset-2">
-                                <button class="btn btn-default">Cancel</button>
-                                <button type="submit" class="btn btn-primary" ng-click="editUserProfile(userEditProfile)">Update</button>
+                                <a href='#/user/ads' class="btn btn-default">Cancel</a>
+                                <a type="submit" class="btn btn-primary button-size" data-ng-click="editUserProfile(userEditProfile)" ng-class="{ 'btn-primary': userEditProfile.$valids, 'btn-success': redirect }"
+                                   ng-disabled="userEditProfile.$invalid">Update</a>
                             </div>
                         </div>
                     </fieldset>
@@ -56,26 +80,48 @@
                             <div class="row center-block" >
                                 <div class="form-group col-md-12">
                                     <label class="control-label" for="old-password">Old password</label>
-                                    <input class="form-control " id="old-password" type="password" placeholder="Old password" data-ng-model="userProfilePassword.oldPassword">
+                                    <input type='password' placeholder="Old Password" id='oldpassword' data-ng-model='changeUserPassword.oldPassword' class='form-control' name='oldpass' ng-minlength="2" ng-maxlength="20" ng-required="true">
+                                    <div class="errors" ng-class="{ active: userPassword.oldpass.$invalid && userPassword.$dirty }">
+                                        <div class="error ng-hide" ng-show="userPassword.oldpass.$error.minlength">
+                                            <span>Password  is longer than 2 characters.</span>
+                                        </div>
+                                        <div class="error ng-hide" ng-show="userPassword.oldpass.$error.maxlength">
+                                            <span>Max password length is 20, please shorten it.</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row center-block col-md-12" >
                                 <div class="form-group">
                                     <label for="new-password" class="control-label">New Password</label>
-                                    <input type="password" class="form-control" id="new-password" placeholder="New Password" data-ng-model="userProfilePassword.newPassword">
+                                    <input type='password' placeholder="New Password" id='newpassword' data-ng-model='changeUserPassword.newPassword' class='form-control' name='newpass' ng-minlength="2" ng-maxlength="20" ng-required="true" password-match="changeUserPassword.confirmPassword">
+                                    <div class="errors" ng-class="{ active: userPassword.newpass.$invalid }">
+                                        <div class="error ng-hide" ng-show="userPassword.newpass.$error.minlength">
+                                            <span>For your own safety, use a password longer than 2 characters.</span>
+                                        </div>
+                                        <div class="error ng-hide" ng-show="userPassword.newpass.$error.maxlength">
+                                            <span>Max password length is 20, please shorten it.</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row center-block col-md-12" >
                                 <div class="form-group">
                                     <label for="confirm-password" class="control-label">Confirm new password</label>
-                                    <input type="password" class="form-control" id="confirm-password" placeholder="Confirm new password" data-ng-model="userProfilePassword.confirmPassword">
+                                    <input type='password' placeholder="Confirm New Password" id='confirmpassword' data-ng-model='changeUserPassword.confirmPassword' class='form-control' name='confirmpass'  ng-required="true" >
+                                    <div class="errors" ng-class="{ active: userPassword.confirmpass.$invalid }">
+                                        <div class="error ng-hide" ng-show="userPassword.newpass.$error.match">
+                                            <span>Passwords do not match.</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                         <div class="form-group">
                             <div class="col-lg-10 col-lg-offset-2">
-                                <button class="btn btn-default">Cancel</button>
-                                <button type="submit" class="btn btn-primary" ng-click="changeUserPassword(userPassword)">Change password</button>
+                                <a href='#/user/ads' class="btn btn-default">Cancel</a>
+                                <a type="submit" class="btn btn-primary" data-ng-click="changeUserPassword(userPassword)" ng-class="{ 'btn-primary': userPassword.$valids && userPassword.$dirty, 'btn-success': redirect }"
+                                   ng-disabled="userPassword.$invalid || userPassword.$pristine">Change Password</a>
                             </div>
                         </div>
                     </fieldset>

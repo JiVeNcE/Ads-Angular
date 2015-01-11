@@ -6,7 +6,7 @@
 
         <div class="col-md-10" >
             <div class="well bs-component">
-                <form class="form-horizontal" name="editform">
+                <form class="form-horizontal" name="editAdForm">
                     <fieldset>
                         <legend class="text-center">Edit Ad</legend>
 
@@ -14,12 +14,31 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="col-lg-2 control-label" for="title">Title:</label>
-                                    <input class="form-control" type="text" id="title" ng-model="adForEdit.title" required />
+                                    <input type="text" id="title"  data-ng-model="adForEdit.title" class="form-control "  name='title' ng-minlength="4" ng-maxlength="50" ng-required="true">
+                                    <span class="help-block">required*</span>
+                                    <div class="errors" ng-class="{ active: editAdForm.title.$invalid && editform.title.$dirty }">
+                                        <div class="error ng-hide" ng-show="editAdForm.title.$error.minlength">
+                                            <p>Min Title lenght is 4.</p>
+                                        </div>
+                                        <div class="error ng-hide" ng-show="editAdForm.title.$error.maxlength">
+                                            <p>Max Title length is 50, please shorten it.</p>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="col-lg-2 control-label" for="text">Text:</label>
-                                    <textarea class="form-control"  id="text" ng-model="adForEdit.text" required > </textarea>
+                                    <textarea rows='6' id="text" data-ng-model="adForEdit.text" class="form-control "  placeholder="text" name='adText' ng-minlength='10' ng-maxlength='285' ng-required="true"></textarea>
+                                        <span class="help-block">Description about the ad
+                                          required*</span>
+                                    <div class="errors" ng-class="{ active: editAdForm.adText.$invalid && editform.adText.$dirty }" required>
+                                        <div class="error ng-hide" ng-show="editAdForm.adText.$error.minlength">
+                                            <p>Min Text lenght  is 10.</p>
+                                        </div>
+                                        <div class="error ng-hide" ng-show="editAdForm.adText.$error.maxlength">
+                                            <p>Max Text length is 285, please shorten it.</p>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
@@ -85,7 +104,8 @@
 
                         <div class="form-group">
                             <div class="col-lg-10 col-lg-offset-2">
-                                <a data-ng-click="editUserAd(adForEdit.id, editform)" class="btn btn-primary">Publish</a>
+                                <a type="submit" href="" class="btn btn-primary col-lg-offset-2" data-ng-click="editUserAd(adForEdit.id,editAdForm)" ng-class="{ 'btn-primary': editAdForm.$valid && editAdForm.$dirty, 'btn-success': redirect }"
+                                   ng-disabled="editAdForm.$invalid">Edit</a>
                                 <a href="#/user/ads" class="btn btn-default">Cancel</a>
                             </div>
                         </div>
