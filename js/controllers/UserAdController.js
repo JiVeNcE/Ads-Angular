@@ -1,7 +1,6 @@
 'use strict';
 
-angularAds.controller('UserAdController',
-    function ($scope, $location, $rootScope, townsService, categoriesService, userService, $cookieStore, notify) {
+angularAds.controller('UserAdController', function ($scope, $location, $rootScope, townsService, categoriesService, userService, $cookieStore) {
 
 
         $rootScope.pageTitle = "My Ads";
@@ -27,47 +26,14 @@ angularAds.controller('UserAdController',
             userService.getUserAds(
                 $scope.adsRequestParams,
                 function success(data) {
-                    console.log(data);
-                    console.log($scope.adsRequestParams);
                     $scope.userAds = data;
                     $scope.clickedMyAds = true;
                     $scope.numItems = data.numItems;
                 },
                 function error(err) {
-                    console.log('no ads' + err.error_description);
+                    console.log('Cannot load user Ads ' + err.error_description);
                 }
             )
-        };
-
-        $scope.deactivateAdStatus = function(id) {
-            userService.deactivateAd(
-              id,
-                function success(data){
-                    alert('status deactivate');
-                    $scope.getUserAd($scope.adsRequestParams);
-                },
-                function error(err){
-                    console.log('cannot change status' + err.error_description);
-                }
-            )
-        };
-
-        $scope.publishAgainAd = function(id) {
-            userService.publishAd(
-                id,
-                function success(data){
-                    alert('add publushed again');
-                    $scope.getUserAd($scope.adsRequestParams);
-                },
-                function error(err){
-                    console.log('cannot publush ad' + err.error_description);
-                }
-            )
-        };
-
-        $scope.loadDeletePage = function(id) {
-          $cookieStore.put('adForDelete', id);
-          $location.path('/user/ads/delete/' + id);
         };
 
         $scope.loadEditPage = function(id) {

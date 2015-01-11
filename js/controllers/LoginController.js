@@ -1,7 +1,6 @@
 'use strict';
 
-angularAds.controller('LoginController',
-    function ($scope, $rootScope, $location, authService, notify) {
+angularAds.controller('LoginController', function ($scope, $rootScope, $location, authService, notify) {
         $rootScope.pageTitle = "Login";
 
         $scope.login = function(userData) {
@@ -11,8 +10,8 @@ angularAds.controller('LoginController',
                     $location.path("/");
                 },
                 function error(err) {
-                    notify("Login Faild ");
-                    console.log(err.error_description)
+                    notify("Login Failed");
+                    console.log('Login error' + err.error_description)
                 }
             );
         };

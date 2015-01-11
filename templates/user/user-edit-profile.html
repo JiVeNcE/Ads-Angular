@@ -80,7 +80,7 @@
                             <div class="row center-block" >
                                 <div class="form-group col-md-12">
                                     <label class="control-label" for="old-password">Old password</label>
-                                    <input type='password' placeholder="Old Password" id='oldpassword' data-ng-model='changeUserPassword.oldPassword' class='form-control' name='oldpass' ng-minlength="2" ng-maxlength="20" ng-required="true">
+                                    <input type='password' placeholder="Old Password" id='oldpassword' data-ng-model='userProfilePassword.oldPassword' class='form-control' name='oldpass' ng-minlength="2" ng-maxlength="20" ng-required="true">
                                     <div class="errors" ng-class="{ active: userPassword.oldpass.$invalid && userPassword.$dirty }">
                                         <div class="error ng-hide" ng-show="userPassword.oldpass.$error.minlength">
                                             <span>Password  is longer than 2 characters.</span>
@@ -94,7 +94,7 @@
                             <div class="row center-block col-md-12" >
                                 <div class="form-group">
                                     <label for="new-password" class="control-label">New Password</label>
-                                    <input type='password' placeholder="New Password" id='newpassword' data-ng-model='changeUserPassword.newPassword' class='form-control' name='newpass' ng-minlength="2" ng-maxlength="20" ng-required="true" password-match="changeUserPassword.confirmPassword">
+                                    <input type='password' placeholder="New Password" id='newpassword' data-ng-model='userProfilePassword.newPassword' class='form-control' name='newpass' ng-minlength="2" ng-maxlength="20" ng-required="true" password-match="userProfilePassword.confirmPassword">
                                     <div class="errors" ng-class="{ active: userPassword.newpass.$invalid }">
                                         <div class="error ng-hide" ng-show="userPassword.newpass.$error.minlength">
                                             <span>For your own safety, use a password longer than 2 characters.</span>
@@ -108,7 +108,7 @@
                             <div class="row center-block col-md-12" >
                                 <div class="form-group">
                                     <label for="confirm-password" class="control-label">Confirm new password</label>
-                                    <input type='password' placeholder="Confirm New Password" id='confirmpassword' data-ng-model='changeUserPassword.confirmPassword' class='form-control' name='confirmpass'  ng-required="true" >
+                                    <input type='password' placeholder="Confirm New Password" id='confirmpassword' data-ng-model='userProfilePassword.confirmPassword' class='form-control' name='confirmpass'  ng-required="true" >
                                     <div class="errors" ng-class="{ active: userPassword.confirmpass.$invalid }">
                                         <div class="error ng-hide" ng-show="userPassword.newpass.$error.match">
                                             <span>Passwords do not match.</span>

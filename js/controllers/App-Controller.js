@@ -18,8 +18,7 @@ angularAds.controller('AppController',
 
         $scope.isNormalUser = function() {
             authService.isNormalUser();
-        }
-
+        };
 
 
         $scope.getClass = function(path) {

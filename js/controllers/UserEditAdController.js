@@ -20,7 +20,7 @@ angularAds.controller('UserEditAdController',
                     $scope.imageDataUrl = $scope.adForEdit.imageDataUrl;
                 },
                 function error(err){
-                    console.log('cannot edit' + err.error_description);
+                    console.log('Cannot load Ad for Edit' + err.error_description);
                 }
             )
         }
@@ -30,26 +30,21 @@ angularAds.controller('UserEditAdController',
             userService.editAd(id, editAdForm,
                 function success(data){
                     $scope.adForEdit = data;
-                    $location.path('/user/ads')
+                    $location.path('/user/ads');
+                    notify("Advertisement edited. Don't forget to submit it for publishing.");
                 },
                 function error(err){
-                    console.log('cannot edit' + err);
+                    console.log('Cannot edit User Ad' + err.error_description);
                 }
             );
 
         };
 
-
-
-
         $scope.changeImage = function(img) {
             $scope.adForEdit.imageDataUrl = img;
             $scope.adForEdit.changeimage = true;
-           alert("Image is loaded, press the edit button to continue");
+            notify("Image is loaded, press the edit button to continue");
         };
-
-
-
 
         $scope.fileSelected = function(fileInputField) {
             var name = fileInputField.files[0].name;
@@ -58,7 +53,7 @@ angularAds.controller('UserEditAdController',
             var element = fileInputField;
             var imageType = /image.*/;
             if (!file.type.match(imageType)) {
-                alert('Support only images');
+               notify('Support only images');
                 return;
             }
             readFile(file).then(function(values) {
@@ -76,7 +71,6 @@ angularAds.controller('UserEditAdController',
             $scope.adForEdit.changeimage = true;
         };
 
-
         function readFile(file) {
             var deferred = $q.defer();
 
@@ -91,8 +85,6 @@ angularAds.controller('UserEditAdController',
 
             return deferred.promise;
         }
-
-
     }
 );
 

@@ -18,13 +18,10 @@ angularAds.controller('MainController', function($scope, $rootScope, adsData, pa
                 $scope.loading = false;
             },
             function error(err) {
-                console.log("gresgka" + err)
+                console.log("Cannot load ads" + err.error_description)
             }
         );
     };
-
-
-    $scope.reloadAds();
 
     $scope.$on("categorySelectionChanged", function(event, selectedCategoryId) {
         $scope.adsParams.categoryId = selectedCategoryId;
@@ -37,5 +34,7 @@ angularAds.controller('MainController', function($scope, $rootScope, adsData, pa
         $scope.adsParams.startPage = 1;
         $scope.reloadAds();
     });
+
+    $scope.reloadAds();
 
 });

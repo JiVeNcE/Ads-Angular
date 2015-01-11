@@ -2,21 +2,13 @@ angularAds.controller('ModalController', function modalController($scope, $rootS
     $scope.id = id;
     $scope.action = action;
 
-    //if (!$cookieStore.get('adForDelete')) {
-    //    $location.path('/user/ads');
-    //} else {
-    //    console.log($cookieStore.get('adForDelete'));
-    //   // adForDelete();
-    //}
-
-
     /* get selected ad */
     userService.getAdById(
         id,
-        function (data) {
+        function success(data) {
             $scope.currentAd = data;
-        }, function (error) {
-            alert('greshka')
+        }, function error (err) {
+           console.log('Cannot get ad by Id' + err.error_description)
         });
 
     /* confirm CRUD operation on ad */
@@ -30,7 +22,7 @@ angularAds.controller('ModalController', function modalController($scope, $rootS
                     id,
                     function success (data) {
                         $route.reload();
-                        notify('Ad Deactivate Successful')
+                        notify('Advertisement deleted')
                     },
                     function error (err) {
                         console.log('Cannot Deactivate this ad' + err.error_description)
@@ -53,7 +45,7 @@ angularAds.controller('ModalController', function modalController($scope, $rootS
                     function success (data) {
                     $route.reload();
                     notify('Ad published Successful');
-                }, function (error) {
+                }, function error (err) {
                         console.log('Cannot Publish ad' + err.error_description)
                 });
                 break;
@@ -67,4 +59,4 @@ angularAds.controller('ModalController', function modalController($scope, $rootS
         $modalInstance.dismiss('cancel');
     };
 
-    });
+});

@@ -1,7 +1,6 @@
 'use strict';
 
-angularAds.controller('RegisterController',
-    function ($scope,  $rootScope, townsService, authService, notify) {
+angularAds.controller('RegisterController', function ($scope, $rootScope, townsService, authService, notify) {
 
         $rootScope.pageTitle = "Register";
         $scope.emailPattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -13,12 +12,12 @@ angularAds.controller('RegisterController',
         $scope.register = function(userRegData) {
             authService.register(userRegData,
                 function success() {
-                   $scope.authService = userRegData;
+                    $scope.authService = userRegData;
                     notify('User account created. Please login.');
                     $location.path('/login');
                 },
                 function error(err) {
-                    console.log(err.error_description)
+                    console.log('Cannot register user' + err.error_description)
                 }
             );
         };
