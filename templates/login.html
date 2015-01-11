@@ -6,22 +6,30 @@
             <div data-ng-include="'templates/layout/left-sidebar.html'"> </div>
         </div>
 
-        <div class="col-md-5 col-md-offset-2">
+        <div class="col-md-5 col-md-offset-2" >
             <div class="well bs-component">
-                <form class="form-horizontal col-centered" >
+                <form class="form-horizontal col-centered" name="loginform" >
                     <fieldset>
                         <legend class="text-center">Login</legend>
 
                         <div class="form-group">
                             <label for="inputUsername" class="col-lg-3 control-label text-center" >Username:</label>
                             <div class="col-lg-7">
-                                <input type="text" class="form-control" id="inputUsername" placeholder="Username" ng-model="userData.username">
+
+                                <input type="text" id="username" data-ng-model="userData.username" class="form-control input-sm" placeholder="Username" data-ng-required="true">
+
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword" class="col-lg-3 control-label">Password:</label>
                             <div class="col-lg-7">
-                                <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="userData.password">
+                                <input type="password" id="password" data-ng-model="userData.password" class="form-control input-sm" name='password'
+                                       placeholder="Password" data-ng-required="true" ng-minlength="2"  >
+                                <div class="errors" ng-class="{ active: loginform.password.$invalid && loginform.password.$dirty }">
+                                    <div class="error ng-hide" ng-show="loginform.password.$error.minlength">
+                                        <p>Password is longer than 2 characters.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">

@@ -15,14 +15,13 @@ angularAds.factory('authService',
                 }).error(error);
             },
 
-            register: function(userData, success, error) {
+            register: function(userRegData, success, error) {
                 var request = {
                     method: 'POST',
                     url: baseUrl + 'user/register',
-                    data: userData
+                    data: userRegData
                 };
                 $http(request).success(function(data) {
-                    sessionStorage['currentUser'] = JSON.stringify(data);
                     success(data);
                 }).error(error);
             },
@@ -39,7 +38,6 @@ angularAds.factory('authService',
             },
 
             isAnonymous : function() {
-
                 return sessionStorage['currentUser'] == undefined;
             },
 

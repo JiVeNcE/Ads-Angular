@@ -14,19 +14,51 @@
                                     <div class="form-group row">
                                         <div class="col-md-6">
                                             <label for="username" class="col-md-1 control-label pull-left label-on-top">Username:</label>
-                                            <input type="username" class="form-control col-md-3" id="username" placeholder="username" ng-model="userData.username" required>
+                                            <div class="form-input username">
+                                                <input type="text" class="form-control" placeholder="Username" name="username" ng-model="userRegData.username" autofocus="true"
+                                                       ng-minlength="4" ng-maxlength="16" ng-required="true" remote-validated="used">
+                                                <div class="errors" ng-class="{ active: registerForm.username.$invalid && registerForm.username.$dirty }">
+                                                    <div class="error ng-hide" ng-show="registerForm.username.$error.minlength">
+                                                        <p>Username is too short!</p>
+                                                    </div>
+                                                    <div class="error ng-hide" ng-show="registerForm.username.$error.maxlength">
+                                                        <p>Max username length is 16, please shorten it.</p>
+                                                    </div>
+                                                    <div class="error ng-hide" ng-show="registerForm.username.$error.used">
+                                                        <p>Username is already taken.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <div class="col-md-6">
-                                            <label for="inputPassword" class=" col-md-1 control-label pull-left label-on-top">Password:</label>
-                                            <input type="password" class=" col-md-3 form-control" id="inputPassword" placeholder="Password" ng-model="userData.password" required>
+                                            <label for="inputPassword" class=" col-md-1 control-label pull-left label-on-top">Password:</label><div class="form-input password">
+                                            <input type="password" class="form-control password" placeholder="Password" name="password"
+                                                   ng-model="userRegData.password" ng-minlength="2" ng-maxlength="20" ng-required="true"password-match="userRegData.confirmPassword" >
+
+                                            <div class="errors" ng-class="{ active: registerForm.password.$invalid && registerForm.password.$dirty }">
+                                                <div class="error ng-hide" ng-show="registerForm.password.$error.minlength">
+                                                    <p>For your own safety, use a password longer than 2 characters.</p>
+                                                </div>
+                                                <div class="error ng-hide" ng-show="registerForm.password.$error.maxlength">
+                                                    <p>For your own <b>SANITY</b>, use a password shorter than 20 characters.</p>
+                                                </div>
+                                            </div>
                                         </div>
+                                    </div>
 
                                         <div class="col-md-6">
                                             <label for="inputConfPassword" class="col-lg-5 control-label label-on-top conf-password" >Confirm password:</label>
-                                            <input type="password" class="col-md-3 form-control" id="inputConfPassword" placeholder="Confirm password" ng-model="userData.confirmPassword" required>
+                                            <div class="form-input confirmPassword">
+                                                <input type="password" class="form-control confirmPassword" placeholder="Repeat Password" name="confirmPassword" ng-model="userRegData.confirmPassword" >
+                                                <div class="errors" ng-class="{ active: registerForm.password.$invalid && registerForm.password.$dirty }">
+                                                    <div class="error ng-hide" ng-show="registerForm.password.$error.match">
+                                                        <p>Passwords do not match.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -34,38 +66,67 @@
                                 <div class="form-group row">
                                     <div class="col-md-6">
                                         <label for="inputName" class="col-md-1 control-label label-on-top">Name:</label>
-                                        <input type="text" class="col-md-3 form-control" id="inputName" placeholder="Name" ng-model="userData.name" required>
+                                        <div class="form-input name">
+                                            <input type="text" class="form-control" placeholder="Name" name="name" ng-model="userRegData.name" ng-minlength="4" ng-maxlength="32" ng-required="true">
+                                            <div class="errors" ng-class="{ active: registerForm.name.$invalid && registerForm.name.$dirty }">
+                                                <div class="error ng-hide" ng-show="registerForm.name.$error.minlength">
+                                                    <p>Provided name is too short!</p>
+                                                </div>
+                                                <div class="error ng-hide" ng-show="registerForm.name.$error.maxlength">
+                                                    <p>Max name length is 32, please shorten it.</p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <label for="inputEmail" class=" col-md-1 control-label label-on-top">Email:</label>
-                                        <input type="email" class="col-md-3 form-control" id="inputEmail" placeholder="Email" ng-model="userData.email" required>
+                                        <div class="form-input email">
+                                            <input type="email" class="form-control email" data-ng-pattern="emailPattern" placeholder="E-Mail" id='inputEmail' name="email" ng-model="userRegData.email" ng-required="true" remote-validated="used">
+                                            <div class="errors" ng-class="{ active: registerForm.email.$invalid && registerForm.email.$dirty }">
+                                                <div class="error ng-hide" ng-show="registerForm.email.$error.pattern">
+                                                    <p>E-Mail seems invalid.</p>
+                                                </div>
+                                                <div class="error ng-hide" ng-show="registerForm.email.$error.used">
+                                                    <p>E-Mail is already taken.</p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <div class="col-md-6">
                                         <label for="inputPhone" class="col-md-1 control-label label-on-top">Phone:</label>
-                                        <input type="tel" class="col-md-3 form-control" id="inputPhone" placeholder="Phone" ng-model="userData.phone" required>
+                                        <div class="form-input phone">
+                                            <input type="text"  class="form-control" id="inputPhone" placeholder="+359 888 888888"
+                                                   data-ng-pattern="phonePattern" name="phone" ng-model="userRegData.phone" ng-required="true">
+                                            <div class="errors" ng-class="{ active: registerForm.phone.$invalid && registerForm.phone.$dirty }" >
+                                                <div class="error ng-hide" ng-show="registerForm.phone.$error.pattern">
+                                                    <p>Phone seems invalid.</p>
+                                                    <p>Format must be +359 888 888888 or 888 888888</p>
+                                                </div>
+
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <label for="select" class="col-md-1 control-label label-on-top">Town:</label>
-                                        <select ng-model="userData.townId"  class="col-md-3 form-control" id="select" >
+                                        <select ng-model="userRegData.townId"  class="col-md-3 form-control" id="select" >
                                             <option value="null">-- choose town --</option>
                                             <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
                                         </select>
                                     </div>
                                 </div>
 
-
-
                         <div class="form-group">
                             <div class="col-lg-2 col-lg-offset-4">
                               <a class="btn btn-default" href="#/">Cancel</a>
                             </div>
                             <div class="col-lg-4">
-                                <button type="submit" class="btn btn-primary" ng-click="register(userData)">Submit</button>
+                                <button type="submit" class="btn btn-primary" ng-click="register(userRegData)" ng-class="{ 'btn-primary': registerForm.$valid && registerForm.$dirty }"
+                                        ng-disabled="registerForm.$invalid || registerForm.$pristine">Register</button>
                             </div>
                         </div>
                     </fieldset>
